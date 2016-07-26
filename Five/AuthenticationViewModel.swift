@@ -35,7 +35,7 @@ protocol AuthenticationViewModelType: class {
     
     weak var viewDelegate:        AuthenticationViewModelViewDelegate?        { get set }
     weak var coordinatorDelegate: AuthenticationViewModelCoordinatorDelegate? { get set }
-    wear var model:               AuthenticationModelType?                    { get set }
+    weak var model:               AuthenticationModelType?                    { get set }
     
     func navigateToLogin()
 }
@@ -44,6 +44,7 @@ class AuthenticationViewModel: AuthenticationViewModelType {
     
     weak var viewDelegate:        AuthenticationViewModelViewDelegate?
     weak var coordinatorDelegate: AuthenticationViewModelCoordinatorDelegate?
+    weak var model:               AuthenticationModelType?
     
     var email: String = .emptyString() {
         didSet {
@@ -127,8 +128,8 @@ class AuthenticationViewModel: AuthenticationViewModelType {
     // MARK: - User Input Validation Methods
     
     private func validateEmailFormat(email: String) -> Bool {
-        let format    = AuthViewModelStyleSheet.ValidEmailPredicateFormat
-        let arguments = AuthViewModelStyleSheet.ValidEmailPredicateArguments
+        let format    = "SELF MATCHES %@"
+        let arguments = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,32}"
         return NSPredicate(format: format, arguments).evaluateWithObject(email)
     }
     

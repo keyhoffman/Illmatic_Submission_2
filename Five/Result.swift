@@ -14,5 +14,5 @@ enum Result<T> {
     typealias Value = T
     
     case Success(Value)
-    case Failure(ErrorType)
+    case Failure(NSError)
 }

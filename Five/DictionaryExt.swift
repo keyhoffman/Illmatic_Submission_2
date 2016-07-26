@@ -7,3 +7,14 @@
 //
 
 import Foundation
+
+// MARK: - Dictionary Extension
+
+extension Dictionary: Dumpable {
+    init(_ pairs: [Element]) {
+        self.init()
+        for (k, v) in pairs {
+            self[k] = v
+        }
+    }
+}
