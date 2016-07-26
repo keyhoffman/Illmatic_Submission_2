@@ -7,15 +7,27 @@
 //
 
 import UIKit
+import Firebase
+
+// MARK: - AppDelegate
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
+    private lazy var applicationCoordinator: ApplicationCoordinator = {
+        return ApplicationCoordinator(window: self.window!)
+    }()
+    
+    override init() {
+        super.init()
+        FIRApp.configure()
+    }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        applicationCoordinator.start()
         return true
     }
 
