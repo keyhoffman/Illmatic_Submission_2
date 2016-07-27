@@ -31,7 +31,7 @@ class AuthenticationCoordinator: Coordinator, AuthenticationChecker {
         else {
             window.rootViewController = rootViewController
             window.makeKeyAndVisible()
-            rootViewController.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: false)
+//            rootViewController.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: false)
         }
         
     }
