@@ -28,13 +28,17 @@ class ApplicationCoordinator: Coordinator {
     
     private let window: UIWindow
     
+    private let authenticationCoordinator: AuthenticationCoordinator
+    
     init(window: UIWindow) {
         self.window = window
+        
+        authenticationCoordinator = AuthenticationCoordinator(window: window)
     }
     
     // MARK: Coordinator Implementation Methods
     
     func start() {
-        
+        authenticationCoordinator.start()
     }
 }

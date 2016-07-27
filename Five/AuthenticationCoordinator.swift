@@ -22,6 +22,8 @@ class AuthenticationCoordinator: Coordinator, AuthenticationChecker {
     
     weak var coordinatorDelegate: AuthenticationCoordinatorDelegate?
     
+    let vc = AuthenticationViewController()
+    
     init(window: UIWindow) {
         self.window = window
     }
@@ -31,7 +33,7 @@ class AuthenticationCoordinator: Coordinator, AuthenticationChecker {
         else {
             window.rootViewController = rootViewController
             window.makeKeyAndVisible()
-//            rootViewController.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: false)
+            rootViewController.pushViewController(vc, animated: false)
         }
         
     }
