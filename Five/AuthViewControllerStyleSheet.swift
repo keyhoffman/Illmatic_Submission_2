@@ -15,8 +15,10 @@ struct AuthViewControllerStyleSheet: ViewPreparer {
     static let SignUpTitle = "Sign Up"
     static let LoginTitle  = "Login"
     
-    static let ValidPasswordCharacterCount = 5
-    static let ValidUsernameCharacterCount = 5
+    static let ValidEmailCharacterCount       = 5
+    static let ValidPasswordCharacterCount    = 5
+    static let ValidUsernameCharacterCount    = 5
+    static let ValidDescriptionCharacterCount = 10
     
     static let ValidEmailPredicateArguments = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,32}"
     static let ValidEmailPredicateFormat    = "SELF MATCHES %@"
@@ -28,6 +30,8 @@ struct AuthViewControllerStyleSheet: ViewPreparer {
     private static let addImageButtonWidthToViewWidthFactor   = 0.60
     private static let addImageButtonTopToViewTopOffsetFactor = 0.20
     
+    private static let descriptionTextFieldTopToAddImageButtonButtonOffset = 50.0
+    
     static func Prepare(authVC: AuthenticationViewController) {
         authVC.view.backgroundColor = Color.FiveBlue.color
         
@@ -38,6 +42,7 @@ struct AuthViewControllerStyleSheet: ViewPreparer {
         
         authVC.passwordTextField.hidden     = true
         authVC.usernameTextField.hidden     = true
+        authVC.descriptionTextField.hidden  = true
         authVC.addProfileImageButton.hidden = true
         
         authVC.emailTextField.becomeFirstResponder()
@@ -71,6 +76,12 @@ struct AuthViewControllerStyleSheet: ViewPreparer {
             make.width.equalTo(authVC.view).multipliedBy(addImageButtonWidthToViewWidthFactor)
             make.height.equalTo(authVC.addProfileImageButton.snp_width)
             make.top.equalTo(authVC.view).offset(addImageButtonTopToViewTopOffset)
+        }
+        
+        authVC.descriptionTextField.snp_makeConstraints { make in
+            make.width.equalTo(authVC.emailTextField)
+            make.height.equalTo(authVC.emailTextField)
+            make.top.equalTo(authVC.addProfileImageButton.snp_bottom).offset(descriptionTextFieldTopToAddImageButtonButtonOffset)
         }
     }
     

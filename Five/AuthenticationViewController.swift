@@ -24,9 +24,10 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate,
     
     // MARK: - TextField Declarations
     
-    let emailTextField    = AuthViewControllerStyleSheet.AuthTextField.Email.textfield
-    let passwordTextField = AuthViewControllerStyleSheet.AuthTextField.Password.textfield
-    let usernameTextField = AuthViewControllerStyleSheet.AuthTextField.Username.textfield
+    let emailTextField       = AuthViewControllerStyleSheet.AuthTextField.Email.textfield
+    let passwordTextField    = AuthViewControllerStyleSheet.AuthTextField.Password.textfield
+    let usernameTextField    = AuthViewControllerStyleSheet.AuthTextField.Username.textfield
+    let descriptionTextField = AuthViewControllerStyleSheet.AuthTextField.Description.textfield
     
     let addProfileImageButton = AuthViewControllerStyleSheet.AuthButton.AddProfileImage.button
     
@@ -86,6 +87,7 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate,
         emailTextField.delegate    = self
         passwordTextField.delegate = self
         usernameTextField.delegate = self
+        descriptionTextField.delegate = self
     }
 }
 
