@@ -13,6 +13,7 @@ import Foundation
 protocol AuthenticationViewModelCoordinatorDelegate: class, ErrorDelegate {
     func userHasBeenAuthenticated(user user: User)
     func navigateToLoginViewController()
+    func displayUserPhotos()
 }
 
 // MARK: - AuthenticationViewModelViewDelegate
@@ -40,6 +41,7 @@ protocol AuthenticationViewModelType: class {
     weak var coordinatorDelegate: AuthenticationViewModelCoordinatorDelegate? { get set }
     
     func navigateToLoginViewController()
+    func displayUserPhotos()
     
     init(isSigningUp: Bool)
 }
@@ -93,7 +95,7 @@ final class AuthenticationViewModel: AuthenticationViewModelType {
         didSet {
             descriptionIsValid = validateDescriptionFormat(description)
             if descriptionIsValid && isSigningUp { submitAuthenticationRequest() }
-            if !descriptionIsValid { coordinatorDelegate?.anErrorHasOccured("That is boring. Make it more interesting!") } // TODO: Move string literal elsewhere
+            if !descriptionIsValid { coordinatorDelegate?.anErrorHasOccured("That is boring. Enter something more interesting!") } // TODO: Move string literal elsewhere
         }
     }
 
@@ -123,6 +125,10 @@ final class AuthenticationViewModel: AuthenticationViewModelType {
     
     func navigateToLoginViewController() {
         coordinatorDelegate?.navigateToLoginViewController()
+    }
+    
+    func displayUserPhotos() {
+        coordinatorDelegate?.displayUserPhotos()
     }
     
     // MARK: - Authentication Submission Methods

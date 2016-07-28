@@ -9,9 +9,10 @@
 import Foundation
 
 struct User: FBType {
-    let key:      String
-    let email:    String
-    let username: String
+    let key:         String
+    let email:       String
+    let username:    String
+    let description: String
 }
 
 // MARK: - User Extension
@@ -27,12 +28,10 @@ extension User {
 
 extension User {
     static func Create(FBDict: FBDictionary?) -> Result<User> {
-        guard let FBDict = FBDict else { return .Failure(instantiationError) }
-        guard let email = FBDict["email"] as? String, let username = FBDict["username"] as? String, let key = FBDict["key"] as? String else {
-            return .Failure(instantiationError)
-        }
+        guard let email = FBDict?["email"] as? String, let username = FBDict?["username"] as? String, let key = FBDict?["key"] as? String,
+            let description = FBDict?["description"] as? String else { return .Failure(instantiationError) }
         
-        return .Success(User(key: key, email: email, username: username))
+        return .Success(User(key: key, email: email, username: username, description: description))
     }
 }
 

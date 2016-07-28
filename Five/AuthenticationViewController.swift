@@ -32,11 +32,11 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate,
     let addProfileImageButton = AuthViewControllerStyleSheet.AuthButton.AddProfileImage.button
     
     // MARK: - ViewController Lifecycle
-    // TODO:   Add A Prepare Method!!!!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setTextFieldDelegates()
+        setButtonActions()
         AuthViewControllerStyleSheet.Prepare(self)
     }
     
@@ -67,12 +67,33 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate,
         usernameTextField.hidden = false
     }
     
+    func usernameIsValid() {
+        emailTextField.hidden    = true
+        passwordTextField.hidden = true
+        usernameTextField.hidden = true
+        
+        usernameTextField.resignFirstResponder()
+        descriptionTextField.becomeFirstResponder()
+        
+        descriptionTextField.hidden  = false
+        addProfileImageButton.hidden = false
+    }
+    
     // MARK: - Set View Properties
     
     func setLoginNavigationItem() {
+        navigationItem.rightBarButtonItem = navigateToLoginButton
+    }
+    
+    private func setButtonActions() {
+        addProfileImageButton.addTarget(self, action: #selector(addProfileImageButtonPressed), forControlEvents: .TouchUpInside)
+        
         navigateToLoginButton.target = self
         navigateToLoginButton.action = #selector(navigateToLoginButtonPressed)
-        navigationItem.rightBarButtonItem = navigateToLoginButton
+    }
+    
+    func addProfileImageButtonPressed() {
+        viewModel?.displayUserPhotos()
     }
     
     func navigateToLoginButtonPressed() {
