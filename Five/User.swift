@@ -20,7 +20,7 @@ struct User: FBType {
 extension User {
     static let Path         = "users/"
     static let NeedsAutoKey = false
-    static let FBSubKeys    = ["username", "email", "rating"]
+    static let FBSubKeys    = ["username", "email", "rating", "description"]
 }
 
 // MARK: - User "createNew" Initializer Extension

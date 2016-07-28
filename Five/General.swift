@@ -35,7 +35,14 @@ enum IconAssest: String {
     var icon: UIImage? {
         return UIImage(named: self.rawValue)
     }
+}
+
+enum ImageAssest: String {
+    case BearArt, BoarsAboveBar, ChinaTown, ClockTower, FriendsOnBeach, KiteFest, LookoutView, Park, PinkDeathBunnies, SanFransisco, Shoes, SurferAtSunset, SurferOnBeach
     
+    var image: UIImage? {
+        return UIImage(named: self.rawValue)
+    }
 }
 
 enum Button {
