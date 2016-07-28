@@ -39,6 +39,7 @@
 		034D8EBF1D497685001A6499 /* MainTabStyleSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EBE1D497685001A6499 /* MainTabStyleSheet.swift */; };
 		034D8EC11D498019001A6499 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EC01D498019001A6499 /* MainTabController.swift */; };
 		034D8EC71D4997DE001A6499 /* ArrayExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EC61D4997DE001A6499 /* ArrayExt.swift */; };
+		034D8EC91D49A5CF001A6499 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EC81D49A5CF001A6499 /* SignUpViewModel.swift */; };
 		27D695914B3DA5EEB1B9B0E5 /* Pods_Five.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66CF4E1DAF8057152A18FC30 /* Pods_Five.framework */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		034D8EBE1D497685001A6499 /* MainTabStyleSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabStyleSheet.swift; sourceTree = "<group>"; };
 		034D8EC01D498019001A6499 /* MainTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		034D8EC61D4997DE001A6499 /* ArrayExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExt.swift; sourceTree = "<group>"; };
+		034D8EC81D49A5CF001A6499 /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		66CF4E1DAF8057152A18FC30 /* Pods_Five.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Five.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EAFFFCF70BC22B1F8FB4BA7 /* Pods-Five.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Five.release.xcconfig"; path = "Pods/Target Support Files/Pods-Five/Pods-Five.release.xcconfig"; sourceTree = "<group>"; };
 		F61965016B6A8DC6EF919DE7 /* Pods-Five.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Five.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Five/Pods-Five.debug.xcconfig"; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				034D8E921D48013B001A6499 /* AuthenticationViewModel.swift */,
+				034D8EC81D49A5CF001A6499 /* SignUpViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				034D8E861D47F582001A6499 /* MainTabBarCoordinator.swift in Sources */,
 				034D8E931D48013B001A6499 /* AuthenticationViewModel.swift in Sources */,
 				034D8E961D480233001A6499 /* ErrorDelegate.swift in Sources */,
+				034D8EC91D49A5CF001A6499 /* SignUpViewModel.swift in Sources */,
 				034D8E7F1D47EF3E001A6499 /* Coordinator.swift in Sources */,
 				034D8E8C1D47F95C001A6499 /* User.swift in Sources */,
 				034D8EB71D496A99001A6499 /* DiscoverCoordinator.swift in Sources */,

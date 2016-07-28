@@ -24,6 +24,8 @@ struct AuthViewControllerStyleSheet: ViewPreparer {
     static func Prepare(authVC: AuthenticationViewController) {
         authVC.view.backgroundColor = Color.FiveBlue.color
         
+        authVC.emailTextField.becomeFirstResponder()
+        
         authVC.view.addSubview(authVC.emailTextField)
         authVC.view.addSubview(authVC.passwordTextField)
         authVC.view.addSubview(authVC.usernameTextField)
@@ -51,7 +53,7 @@ struct AuthViewControllerStyleSheet: ViewPreparer {
     }
     
     // MARK: - AuthTextField
-    
+    // TODO: MOVE TEXTFIELDS ELSEWHERE!!!!
     enum TextField {
         case Email, Password, Username
         
@@ -109,4 +111,19 @@ struct AuthViewControllerStyleSheet: ViewPreparer {
         }
     }
     
+    enum AuthButton {
+        case AddProfileImage
+        
+        var button: UIButton {
+            switch self {
+            case AddProfileImage: return Button.AddProfileImage.button
+            }
+        }
+    }
+    
 }
+
+
+
+
+

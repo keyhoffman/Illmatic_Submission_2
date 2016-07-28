@@ -24,16 +24,18 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate,
     
     // MARK: - TextField Declarations
     
-    let emailTextField    = AuthViewControllerStyleSheet.TextField.Email.textField
+    let emailTextField    = AuthViewControllerStyleSheet.TextField.Email.textField 
     let passwordTextField = AuthViewControllerStyleSheet.TextField.Password.textField
     let usernameTextField = AuthViewControllerStyleSheet.TextField.Username.textField
+    
+    let addProfileImageButton = AuthViewControllerStyleSheet.AuthButton.AddProfileImage.button
     
     // MARK: - ViewController Lifecycle
     // TODO:   Add A Prepare Method!!!!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTextFieldsAndErrorLabel()
+        setTextFieldDelegates()
         AuthViewControllerStyleSheet.Prepare(self)
     }
     
@@ -81,12 +83,10 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate,
         self.title = title
     }
     
-    private func setTextFieldsAndErrorLabel() {
+    private func setTextFieldDelegates() {
         emailTextField.delegate    = self
         passwordTextField.delegate = self
         usernameTextField.delegate = self
-        
-        emailTextField.becomeFirstResponder()
     }
 }
 

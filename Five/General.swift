@@ -39,7 +39,7 @@ enum IconAssest: String {
 }
 
 enum Button {
-    case Cancel, SendInvite, JoinEvent, SaveEvent
+    case Cancel, SendInvite, JoinEvent, SaveEvent, AddProfileImage
     
     var button: UIButton {
         let b = UIButton(type: .Custom)
@@ -55,6 +55,7 @@ enum Button {
         case SaveEvent:  return ("Save Event", Color.FiveBlue.color, nil)
         case Cancel:     return (nil, nil, IconAssest.CancelEvent.icon)
         case SendInvite: return (nil, nil, IconAssest.PaperPlaneInvite.icon)
+        case AddProfileImage: return ("Tap to add a profile image", Color.FiveBlueTrans.color, nil)
         }
     }
 }
