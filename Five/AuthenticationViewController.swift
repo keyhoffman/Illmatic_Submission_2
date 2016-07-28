@@ -28,7 +28,11 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate,
     let usernameTextField    = AuthViewControllerStyleSheet.AuthTextField.Username.textfield
     let descriptionTextField = AuthViewControllerStyleSheet.AuthTextField.Description.textfield
     
-    let addProfileImageButton = AuthViewControllerStyleSheet.AuthButton.AddProfileImage.button
+    let addProfileImageFromPhotosButton = AuthViewControllerStyleSheet.AuthButton.AddImageFromPhotos.button
+    let addProfileImageFromCameraButton = AuthViewControllerStyleSheet.AuthButton.AddImageFromCamera.button
+    
+    let imageInstructionsLabel       = AuthViewControllerStyleSheet.AuthLabel.ImageInstructions.label
+    let descriptionInstructionsLabel = AuthViewControllerStyleSheet.AuthLabel.DescriptionInstructions.label
     
     // MARK: - ViewController Lifecycle
     
@@ -44,9 +48,10 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate,
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         guard let text = textField.text where !text.isEmpty else { return false }
         switch textField {
-        case emailTextField:    viewModel?.email    = text
-        case passwordTextField: viewModel?.password = text
-        case usernameTextField: viewModel?.username = text
+        case emailTextField:       viewModel?.email       = text
+        case passwordTextField:    viewModel?.password    = text
+        case usernameTextField:    viewModel?.username    = text
+        case descriptionTextField: viewModel?.description = text
         default: fatalError("Invalid textfield")
         }
         return true
@@ -72,10 +77,23 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate,
         usernameTextField.hidden = true
         
         usernameTextField.resignFirstResponder()
+
+        addProfileImageFromPhotosButton.hidden = false
+        addProfileImageFromCameraButton.hidden = false
+        
+        imageInstructionsLabel.hidden = false
+    }
+    
+    func profileImageHasBeenSet() {
+        addProfileImageFromCameraButton.hidden = true
+        addProfileImageFromPhotosButton.hidden = true
+        
+        imageInstructionsLabel.hidden       = true
+        descriptionInstructionsLabel.hidden = false
+        
         descriptionTextField.becomeFirstResponder()
         
-        descriptionTextField.hidden  = false
-        addProfileImageButton.hidden = false
+        descriptionTextField.hidden = false
     }
     
     // MARK: - Set View Properties
@@ -85,14 +103,19 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate,
     }
     
     private func setButtonActions() {
-        addProfileImageButton.addTarget(self, action: #selector(addProfileImageButtonPressed), forControlEvents: .TouchUpInside)
+        addProfileImageFromPhotosButton.addTarget(self, action: #selector(addProfileImageFromPhotosButtonPressed), forControlEvents: .TouchUpInside)
+        addProfileImageFromCameraButton.addTarget(self, action: #selector(addProfileImageFromCameraButtonPressed), forControlEvents: .TouchUpInside)
         
         navigateToLoginButton.target = self
         navigateToLoginButton.action = #selector(navigateToLoginButtonPressed)
     }
     
-    func addProfileImageButtonPressed() {
+    func addProfileImageFromPhotosButtonPressed() {
         viewModel?.displayUserPhotos()
+    }
+    
+    func addProfileImageFromCameraButtonPressed() {
+        viewModel?.displayCamera()
     }
     
     func navigateToLoginButtonPressed() {
@@ -104,9 +127,9 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate,
     }
     
     private func setTextFieldDelegates() {
-        emailTextField.delegate    = self
-        passwordTextField.delegate = self
-        usernameTextField.delegate = self
+        emailTextField.delegate       = self
+        passwordTextField.delegate    = self
+        usernameTextField.delegate    = self
         descriptionTextField.delegate = self
     }
 }

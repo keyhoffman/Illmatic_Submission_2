@@ -39,9 +39,10 @@
 		034D8EBF1D497685001A6499 /* MainTabStyleSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EBE1D497685001A6499 /* MainTabStyleSheet.swift */; };
 		034D8EC11D498019001A6499 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EC01D498019001A6499 /* MainTabController.swift */; };
 		034D8EC71D4997DE001A6499 /* ArrayExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EC61D4997DE001A6499 /* ArrayExt.swift */; };
-		034D8EC91D49A5CF001A6499 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EC81D49A5CF001A6499 /* SignUpViewModel.swift */; };
 		034D8ECB1D49C99F001A6499 /* TabBarControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8ECA1D49C99F001A6499 /* TabBarControllerExt.swift */; };
 		034D8ECD1D49F28F001A6499 /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8ECC1D49F28F001A6499 /* ImagePickerViewController.swift */; };
+		034D8ECF1D4A9BB1001A6499 /* ImagePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8ECE1D4A9BB1001A6499 /* ImagePickerViewModel.swift */; };
+		034D8ED31D4ABC3C001A6499 /* FirebaseStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8ED21D4ABC3C001A6499 /* FirebaseStorageType.swift */; };
 		27D695914B3DA5EEB1B9B0E5 /* Pods_Five.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66CF4E1DAF8057152A18FC30 /* Pods_Five.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,9 +81,10 @@
 		034D8EBE1D497685001A6499 /* MainTabStyleSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabStyleSheet.swift; sourceTree = "<group>"; };
 		034D8EC01D498019001A6499 /* MainTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		034D8EC61D4997DE001A6499 /* ArrayExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExt.swift; sourceTree = "<group>"; };
-		034D8EC81D49A5CF001A6499 /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		034D8ECA1D49C99F001A6499 /* TabBarControllerExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarControllerExt.swift; sourceTree = "<group>"; };
 		034D8ECC1D49F28F001A6499 /* ImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
+		034D8ECE1D4A9BB1001A6499 /* ImagePickerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerViewModel.swift; sourceTree = "<group>"; };
+		034D8ED21D4ABC3C001A6499 /* FirebaseStorageType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseStorageType.swift; sourceTree = "<group>"; };
 		66CF4E1DAF8057152A18FC30 /* Pods_Five.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Five.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EAFFFCF70BC22B1F8FB4BA7 /* Pods-Five.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Five.release.xcconfig"; path = "Pods/Target Support Files/Pods-Five/Pods-Five.release.xcconfig"; sourceTree = "<group>"; };
 		F61965016B6A8DC6EF919DE7 /* Pods-Five.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Five.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Five/Pods-Five.debug.xcconfig"; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				034D8E8B1D47F95C001A6499 /* User.swift */,
 				034D8EA01D4804BD001A6499 /* Result.swift */,
 				034D8EA41D4820ED001A6499 /* FirebaseType.swift */,
+				034D8ED21D4ABC3C001A6499 /* FirebaseStorageType.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -205,7 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				034D8E921D48013B001A6499 /* AuthenticationViewModel.swift */,
-				034D8EC81D49A5CF001A6499 /* SignUpViewModel.swift */,
+				034D8ECE1D4A9BB1001A6499 /* ImagePickerViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				034D8E671D47EDAE001A6499 /* AppDelegate.swift in Sources */,
 				034D8E9D1D480353001A6499 /* StringExt.swift in Sources */,
 				034D8EC11D498019001A6499 /* MainTabController.swift in Sources */,
+				034D8ED31D4ABC3C001A6499 /* FirebaseStorageType.swift in Sources */,
 				034D8E7D1D47EF21001A6499 /* ApplicationCoordinator.swift in Sources */,
 				034D8EBB1D496AB2001A6499 /* ProfileCoordinator.swift in Sources */,
 				034D8EB21D495969001A6499 /* ViewPreparer.swift in Sources */,
@@ -451,9 +455,9 @@
 				034D8E931D48013B001A6499 /* AuthenticationViewModel.swift in Sources */,
 				034D8ECB1D49C99F001A6499 /* TabBarControllerExt.swift in Sources */,
 				034D8E961D480233001A6499 /* ErrorDelegate.swift in Sources */,
-				034D8EC91D49A5CF001A6499 /* SignUpViewModel.swift in Sources */,
 				034D8E7F1D47EF3E001A6499 /* Coordinator.swift in Sources */,
 				034D8E8C1D47F95C001A6499 /* User.swift in Sources */,
+				034D8ECF1D4A9BB1001A6499 /* ImagePickerViewModel.swift in Sources */,
 				034D8ECD1D49F28F001A6499 /* ImagePickerViewController.swift in Sources */,
 				034D8EB71D496A99001A6499 /* DiscoverCoordinator.swift in Sources */,
 				034D8E9F1D480366001A6499 /* ColorExt.swift in Sources */,

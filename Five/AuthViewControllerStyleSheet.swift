@@ -27,10 +27,10 @@ struct AuthViewControllerStyleSheet: ViewPreparer {
     private static let emailTextFieldHeightToViewHeightFactor = 0.05
     private static let emailTextFieldTopToViewTopOffsetFactor = 0.20
     
-    private static let addImageButtonWidthToViewWidthFactor   = 0.60
-    private static let addImageButtonTopToViewTopOffsetFactor = 0.20
+    private static let addImageButtonWidthToViewWidthFactor   = 0.35
+    private static let addImageButtonTopToViewTopOffsetFactor = 0.15
     
-    private static let descriptionTextFieldTopToAddImageButtonButtonOffset = 50.0
+    private static let descriptionTextFieldTopToAddImageButtonButtonOffset = 40.0
     
     static func Prepare(authVC: AuthenticationViewController) {
         authVC.view.backgroundColor = Color.FiveBlue.color
@@ -43,13 +43,23 @@ struct AuthViewControllerStyleSheet: ViewPreparer {
         authVC.passwordTextField.hidden     = true
         authVC.usernameTextField.hidden     = true
         authVC.descriptionTextField.hidden  = true
-        authVC.addProfileImageButton.hidden = true
         
         authVC.emailTextField.becomeFirstResponder()
+        
+        authVC.addProfileImageFromCameraButton.hidden = true
+        authVC.addProfileImageFromPhotosButton.hidden = true
+        
+        authVC.descriptionInstructionsLabel.hidden = true
+        authVC.imageInstructionsLabel.hidden       = true
         
         authVC.view.addSubview(authVC.emailTextField)
         authVC.view.addSubview(authVC.passwordTextField)
         authVC.view.addSubview(authVC.usernameTextField)
+        authVC.view.addSubview(authVC.descriptionTextField)
+        authVC.view.addSubview(authVC.addProfileImageFromCameraButton)
+        authVC.view.addSubview(authVC.addProfileImageFromPhotosButton)
+        authVC.view.addSubview(authVC.descriptionInstructionsLabel)
+        authVC.view.addSubview(authVC.imageInstructionsLabel)
         
         authVC.emailTextField.snp_makeConstraints { make in
             make.centerX.equalTo(authVC.view.snp_centerX)
@@ -72,17 +82,41 @@ struct AuthViewControllerStyleSheet: ViewPreparer {
             make.height.equalTo(authVC.emailTextField)
         }
         
-        authVC.addProfileImageButton.snp_makeConstraints { make in // MAKE CIRCLE
-            make.width.equalTo(authVC.view).multipliedBy(addImageButtonWidthToViewWidthFactor)
-            make.height.equalTo(authVC.addProfileImageButton.snp_width)
-            make.top.equalTo(authVC.view).offset(addImageButtonTopToViewTopOffset)
-        }
-        
         authVC.descriptionTextField.snp_makeConstraints { make in
             make.width.equalTo(authVC.emailTextField)
             make.height.equalTo(authVC.emailTextField)
-            make.top.equalTo(authVC.addProfileImageButton.snp_bottom).offset(descriptionTextFieldTopToAddImageButtonButtonOffset)
+            make.centerX.equalTo(authVC.emailTextField)
+            make.top.equalTo(authVC.descriptionInstructionsLabel.snp_bottom).offset(descriptionTextFieldTopToAddImageButtonButtonOffset)
         }
+        
+        authVC.addProfileImageFromCameraButton.snp_makeConstraints { make in // MAKE CIRCLE
+            make.width.equalTo(authVC.view).multipliedBy(addImageButtonWidthToViewWidthFactor)
+            make.height.equalTo(authVC.addProfileImageFromCameraButton.snp_width)
+            make.right.equalTo(authVC.view.snp_centerX).offset(-30)
+            make.top.equalTo(authVC.view).offset(addImageButtonTopToViewTopOffset)
+        }
+        
+        authVC.addProfileImageFromPhotosButton.snp_makeConstraints { make in
+            make.width.equalTo(authVC.addProfileImageFromCameraButton)
+            make.height.equalTo(authVC.addProfileImageFromCameraButton)
+            make.top.equalTo(authVC.addProfileImageFromCameraButton)
+            make.left.equalTo(authVC.view.snp_centerX).inset(30)
+        }
+        
+        authVC.descriptionInstructionsLabel.snp_makeConstraints { make in
+            make.width.equalTo(authVC.view).multipliedBy(0.90)
+            make.height.equalTo(40)
+            make.top.equalTo(authVC.view).offset(100)
+            make.centerX.equalTo(authVC.view)
+        }
+        
+        authVC.imageInstructionsLabel.snp_makeConstraints { make in
+            make.width.equalTo(authVC.view).multipliedBy(0.90)
+            make.height.equalTo(40)
+            make.top.equalTo(authVC.addProfileImageFromCameraButton.snp_bottom).offset(40)
+            make.centerX.equalTo(authVC.view)
+        }
+        
     }
     
     // MARK: - AuthTextField
@@ -113,11 +147,23 @@ struct AuthViewControllerStyleSheet: ViewPreparer {
     }
     
     enum AuthButton {
-        case AddProfileImage
+        case AddImageFromCamera, AddImageFromPhotos
         
         var button: UIButton {
             switch self {
-            case AddProfileImage: return Button.AddProfileImage.button
+            case AddImageFromCamera: return Button.AddImageFromCamera.button
+            case AddImageFromPhotos: return Button.AddImageFromPhotos.button
+            }
+        }
+    }
+    
+    enum AuthLabel {
+        case ImageInstructions, DescriptionInstructions
+        
+        var label: UILabel {
+            switch self {
+            case ImageInstructions:       return Label.ImageInstructions.label
+            case DescriptionInstructions: return Label.DescriptionInstructions.label
             }
         }
     }

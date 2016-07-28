@@ -13,7 +13,7 @@ import Firebase
 
 protocol AuthenticationModelType {
     func login(email email: String, password: String, withResult: Result<User> -> Void)
-    func signUp(email email: String, password: String, username: String, withResult: Result<User> -> Void)
+    func signUp(email email: String, password: String, username: String, description: String, imageData data: NSData, withResult: Result<User> -> Void)
 }
 
 
@@ -26,45 +26,54 @@ struct AuthenticationModel: AuthenticationModelType {
     // MARK: AuthenticationModelProtocol Required Methods
     
     func login(email email: String, password: String, withResult: UserResultBlock) {
-        FIRAuth.auth()?.signInWithEmail(email, password: password) { user, error in
+        FIRAuth.auth()?.signInWithEmail(email, password: password) { loggedInUser, error in
             if let error = error {
                 withResult(.Failure(error))
                 return
             }
-            guard let user = user, let email = user.email, let username = user.displayName else { // TODO: Move string literal elsewhere
-                let error = NSError(domain: "TableBNB", code: 1, userInfo: [NSLocalizedDescriptionKey: "Could not create atomic user"])
-                withResult(.Failure(error))
-                return
-            }
-            let loggedInUser = User(key: user.uid, email: email, username: username)
-            withResult(.Success(loggedInUser))
+            guard let uid = loggedInUser?.uid else { return }
+            User.loadValue(withKey: uid, forType: User.self) { withResult($0) }
         }
         
     }
     
-    func signUp(email email: String, password: String, username: String, withResult: UserResultBlock) {
-        FIRAuth.auth()?.createUserWithEmail(email, password: password) { user, error in
+    func signUp(email email: String, password: String, username: String, description: String, imageData data: NSData, withResult: UserResultBlock) {
+        FIRAuth.auth()?.createUserWithEmail(email, password: password) { newUser, error in
             if let error = error {
                 withResult(.Failure(error))
                 return
             }
-            guard let user = user else { // TODO: Move string literal elsewhere
-                let error = NSError(domain: "TableBNB", code: 1, userInfo: [NSLocalizedDescriptionKey: "Could not create atomic user"])
-                withResult(.Failure(error))
-                return
-            }
-            let changeRequest = user.profileChangeRequest()
-            changeRequest.displayName = username
-            changeRequest.commitChangesWithCompletion { error in
+            guard let newUser = newUser, email = newUser.email else { return }
+            let imagePath = newUser.uid + User.ProfileImageName
+            let user = User(key: newUser.uid, email: email, username: username, description: description, storagePath: imagePath)
+            user.uploadToStorage(withData: data) { error in
                 if let error = error {
                     withResult(.Failure(error))
-                    return
                 }
-                let logggedInUser = User(key: user.uid, email: email, username: username)
-                logggedInUser.sendToFB { result in
-                    withResult(result)
-                }
+                user.sendToFB { withResult($0) }
             }
         }
     }
 }
+
+
+//guard let user = user else { // TODO: Move string literal elsewhere
+//    let error = NSError(domain: "TableBNB", code: 1, userInfo: [NSLocalizedDescriptionKey: "Could not create atomic user"])
+//    withResult(.Failure(error))
+//    return
+//}
+
+
+
+
+
+//            guard let user = user, let email = user.email, let username = user.displayName else { // TODO: Move string literal elsewhere
+//                let error = NSError(domain: "TableBNB", code: 1, userInfo: [NSLocalizedDescriptionKey: "Could not create atomic user"])
+//                withResult(.Failure(error))
+//                return
+//            }
+//            let loggedInUser = User(key: user.uid, email: email, username: username, description: .emptyString())
+//            withResult(.Success(loggedInUser))
+
+
+

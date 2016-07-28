@@ -8,19 +8,21 @@
 
 import Foundation
 
-struct User: FBType {
-    let key:         String
-    let email:       String
-    let username:    String
-    let description: String
+struct User: FBType, FBStorageType {
+    let key:           String
+    let email:         String
+    let username:      String
+    let description:   String
+    let storagePath:   String
 }
 
 // MARK: - User Extension
 
 extension User {
-    static let Path         = "users/"
-    static let NeedsAutoKey = false
-    static let FBSubKeys    = ["username", "email", "rating", "description"]
+    static let Path             = "users/"
+    static let NeedsAutoKey     = false
+    static let FBSubKeys        = ["username", "email", "rating", "description", "storagePath"]
+    static let ProfileImageName = "/profileImage.png"
 }
 
 // MARK: - User "createNew" Initializer Extension
@@ -29,9 +31,9 @@ extension User {
 extension User {
     static func Create(FBDict: FBDictionary?) -> Result<User> {
         guard let email = FBDict?["email"] as? String, let username = FBDict?["username"] as? String, let key = FBDict?["key"] as? String,
-            let description = FBDict?["description"] as? String else { return .Failure(instantiationError) }
+            let description = FBDict?["description"] as? String, let storagePath = FBDict?["storagePath"] as? String else { return .Failure(instantiationError) }
         
-        return .Success(User(key: key, email: email, username: username, description: description))
+        return .Success(User(key: key, email: email, username: username, description: description, storagePath: storagePath))
     }
 }
 

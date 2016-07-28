@@ -70,6 +70,37 @@ extension FBType {
         }
         return Dictionary(FBDict.filter { Self.FBSubKeys.contains($0.0) })
     }
-
-
 }
+
+extension FBType {
+    static func loadChildAdded(withBlock: Result<Self> -> Void) {
+        observe(withEventType: .ChildAdded, forModelType: Self.self, withPath: Path) { withBlock($0) }
+    }
+    
+    static func loadValue<T: FBType>(withKey key: String, forType type: T.Type, withBlock: Result<T> -> Void) {
+        let path = type.Path + key
+        observe(withEventType: .Value, forModelType: type, withPath: path) { withBlock($0) }
+    }
+    
+    private static var snapshotError: NSError { // TODO: Move elsewhere
+        return NSError(domain: "TableBNB", code: 3, userInfo: [NSLocalizedDescriptionKey: "Could not convert snapshot to type \(Self.self)"])
+    }
+    
+    private static func observe<T: FBType>(withEventType event: FIRDataEventType, forModelType model: T.Type, withPath path: String, withBlock: Result<T> -> Void) {
+        Self.RootRef.child(path).observeEventType(event, withBlock: { (snapshot: FIRDataSnapshot) in
+            guard var FBDict = snapshot.value as? FBDictionary else { // TODO: Is it okay to make FBDict mutable?
+                print("Resource loading fail")
+                withBlock(.Failure(self.snapshotError))
+                return
+            }
+            FBDict["key"] = snapshot.key
+            withBlock(model.Create(FBDict))
+            return
+        }) { error in
+            withBlock(.Failure(error))
+            return
+        }
+    }
+}
+
+

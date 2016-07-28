@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 // MARK: - AuthenticationViewModelCoordinatorDelegate
 
@@ -14,6 +15,7 @@ protocol AuthenticationViewModelCoordinatorDelegate: class, ErrorDelegate {
     func userHasBeenAuthenticated(user user: User)
     func navigateToLoginViewController()
     func displayUserPhotos()
+    func displayCamera()
 }
 
 // MARK: - AuthenticationViewModelViewDelegate
@@ -22,6 +24,7 @@ protocol AuthenticationViewModelViewDelegate: class {
     func emailIsValid()
     func passwordIsValid()
     func usernameIsValid()
+    func profileImageHasBeenSet()
     func setLoginNavigationItem()
     func setVCTitle(title: String)
 }
@@ -30,10 +33,12 @@ protocol AuthenticationViewModelViewDelegate: class {
 // MARK: - AuthenticationViewModelType
 
 protocol AuthenticationViewModelType: class {
-    var email:    String    { get set }
-    var password: String    { get set }
-    var username: String    { get set }
+    var email:       String { get set }
+    var password:    String { get set }
+    var username:    String { get set }
     var description: String { get set }
+    
+    var profileImageData: NSData? { get set }
     
     var model: AuthenticationModelType? { get set }
     
@@ -42,6 +47,7 @@ protocol AuthenticationViewModelType: class {
     
     func navigateToLoginViewController()
     func displayUserPhotos()
+    func displayCamera()
     
     init(isSigningUp: Bool)
 }
@@ -86,19 +92,22 @@ final class AuthenticationViewModel: AuthenticationViewModelType {
     var username: String = .emptyString() {
         didSet {
             usernameIsValid = validateUsernameFormat(username)
-            if usernameIsValid && isSigningUp { viewDelegate?.usernameIsValid() }
-            if !usernameIsValid { coordinatorDelegate?.anErrorHasOccured("Invalid username format") } // TODO: Move string literal elsewhere
+            if usernameIsValid && isSigningUp   { viewDelegate?.usernameIsValid() }
+            if !usernameIsValid || !isSigningUp { coordinatorDelegate?.anErrorHasOccured("Invalid username format") } // TODO: Move string literal elsewhere
         }
     }
     
     var description: String = .emptyString() {
         didSet {
             descriptionIsValid = validateDescriptionFormat(description)
-            if descriptionIsValid && isSigningUp { submitAuthenticationRequest() }
-            if !descriptionIsValid { coordinatorDelegate?.anErrorHasOccured("That is boring. Enter something more interesting!") } // TODO: Move string literal elsewhere
+            if descriptionIsValid && isSigningUp   { submitAuthenticationRequest() }
+            if !descriptionIsValid || !isSigningUp { coordinatorDelegate?.anErrorHasOccured("That is boring. Enter something more interesting!") } // TODO: Move string literal elsewhere
         }
     }
-
+    
+    var profileImageData: NSData? {
+        didSet { viewDelegate?.profileImageHasBeenSet() }
+    }
     // MARK: - User Input Validation Declarations
 
     private var emailIsValid       = false
@@ -109,7 +118,7 @@ final class AuthenticationViewModel: AuthenticationViewModelType {
     private var canSubmitAuthenticationRequest: Bool {
         switch isSigningUp {
         case false: return emailIsValid && passwordIsValid
-        case true:  return emailIsValid && passwordIsValid && usernameIsValid && descriptionIsValid
+        case true:  return emailIsValid && passwordIsValid && usernameIsValid && descriptionIsValid && profileImageData != nil
         }
     }
 
@@ -131,6 +140,10 @@ final class AuthenticationViewModel: AuthenticationViewModelType {
         coordinatorDelegate?.displayUserPhotos()
     }
     
+    func displayCamera() {
+        coordinatorDelegate?.displayCamera()
+    }
+    
     // MARK: - Authentication Submission Methods
     
     private func submitAuthenticationRequest() {
@@ -139,8 +152,13 @@ final class AuthenticationViewModel: AuthenticationViewModelType {
             return
         }
         
-        if isSigningUp  { model.signUp(email: email, password: password, username: username) { self.handleAuthenticationResult($0) } }
-        if !isSigningUp { model.login(email: email, password: password)                      { self.handleAuthenticationResult($0) } }
+        if isSigningUp  { guard let imageData = profileImageData else {
+                coordinatorDelegate?.anErrorHasOccured("Invalid image data")
+                return
+            }
+            model.signUp(email: email, password: password, username: username, description: description, imageData: imageData) { self.handleAuthenticationResult($0) }
+        }
+        if !isSigningUp { model.login(email: email, password: password) { self.handleAuthenticationResult($0) } }
     }
     
     private func handleAuthenticationResult(result: Result<User>) {

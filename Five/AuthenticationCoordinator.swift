@@ -15,7 +15,7 @@ protocol AuthenticationCoordinatorDelegate: class {
 
 // MARK: - AuthenticationCoordinator
 
-final class AuthenticationCoordinator: Coordinator, AuthenticationChecker, AuthenticationViewModelCoordinatorDelegate, UIImagePickerControllerDelegate {
+final class AuthenticationCoordinator: Coordinator, AuthenticationChecker, AuthenticationViewModelCoordinatorDelegate, ImagePickerViewModelCoordinatorDelegate {
     
     weak var coordinatorDelegate: AuthenticationCoordinatorDelegate?
     
@@ -25,8 +25,14 @@ final class AuthenticationCoordinator: Coordinator, AuthenticationChecker, Authe
     private let signUpViewController = AuthenticationViewController()
     private let loginViewController  = AuthenticationViewController()
     
+    private let takeSelfieViewController = ImagePickerViewController()
+    private let selectPhotoViewController = ImagePickerViewController()
+    
     private let signUpViewModel: AuthenticationViewModelType
     private let loginViewModel:  AuthenticationViewModelType
+    
+    private let takeSelfieViewModel:  ImagePickerViewModelType
+    private let selectPhotoViewModel: ImagePickerViewModelType
     
     private let authenticationModel: AuthenticationModelType
     
@@ -35,6 +41,9 @@ final class AuthenticationCoordinator: Coordinator, AuthenticationChecker, Authe
         
         signUpViewModel = AuthenticationViewModel(isSigningUp: true)
         loginViewModel  = AuthenticationViewModel(isSigningUp: false)
+        
+        takeSelfieViewModel  = ImagePickerViewModel(isTakingSelfie: true)
+        selectPhotoViewModel = ImagePickerViewModel(isTakingSelfie: false)
         
         authenticationModel = AuthenticationModel()
         
@@ -46,14 +55,19 @@ final class AuthenticationCoordinator: Coordinator, AuthenticationChecker, Authe
         
         signUpViewModel.coordinatorDelegate = self
         loginViewModel.coordinatorDelegate  = self
+        
+        takeSelfieViewModel.coordinatorDelegate  = self
+        selectPhotoViewModel.coordinatorDelegate = self
     }
     
     func start() {
-        if let user = checkForCurrentUser() { coordinatorDelegate?.userHasBeenAuthenticated(user: user) }
-        else {
-            window.rootViewController = rootViewController
-            window.makeKeyAndVisible()
-            rootViewController.pushViewController(signUpViewController, animated: false)
+        checkForCurrentUser { result in
+            switch result {
+            case .Success(let user): self.coordinatorDelegate?.userHasBeenAuthenticated(user: user)
+            case .Failure(_):        self.window.rootViewController = self.rootViewController
+                                     self.window.makeKeyAndVisible()
+                                     self.rootViewController.pushViewController(self.signUpViewController, animated: false)
+            }
         }
     }
     
@@ -70,7 +84,22 @@ final class AuthenticationCoordinator: Coordinator, AuthenticationChecker, Authe
     }
     
     func displayUserPhotos() {
-        <#code#>
+        rootViewController.presentViewController(selectPhotoViewController, animated: true) {
+            self.selectPhotoViewController.viewModel = self.selectPhotoViewModel
+        }
+    }
+    
+    func displayCamera() {
+        rootViewController.presentViewController(takeSelfieViewController, animated: true) {
+            self.takeSelfieViewController.viewModel = self.takeSelfieViewModel
+        }
+    }
+    
+    func userHasChosenImage(withData data: NSData) {
+        rootViewController.dismissViewControllerAnimated(true) { 
+            self.signUpViewModel.profileImageData = data
+        }
+    
     }
 }
 

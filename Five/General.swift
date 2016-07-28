@@ -46,7 +46,7 @@ enum ImageAssest: String {
 }
 
 enum Button {
-    case Cancel, SendInvite, JoinEvent, SaveEvent, AddProfileImage
+    case Cancel, SendInvite, JoinEvent, SaveEvent, AddImageFromPhotos, AddImageFromCamera
     
     var button: UIButton {
         let b = UIButton(type: .Custom)
@@ -62,7 +62,34 @@ enum Button {
         case SaveEvent:       return ("Save Event", Color.FiveBlue.color, nil)
         case Cancel:          return (nil, nil, IconAssest.CancelEvent.icon)
         case SendInvite:      return (nil, nil, IconAssest.PaperPlaneInvite.icon)
-        case AddProfileImage: return ("Tap to add a profile image", Color.FiveBlueTrans.color, nil)
+        case AddImageFromPhotos: return ("Photos", Color.FiveRed.color, nil)
+        case AddImageFromCamera: return ("Selfie", Color.FiveOrange.color, nil)
+        }
+    }
+}
+
+enum Label {
+    case ImageInstructions, DescriptionInstructions
+    
+    var label: UILabel {
+        let l = UILabel()
+        l.text = text
+        l.textColor = color
+        l.textAlignment = .Center
+        return l
+    }
+    
+    private var text: String {
+        switch self {
+        case ImageInstructions:       return "Select an image for your profile"
+        case DescriptionInstructions: return "Write a one line bio!"
+        }
+    }
+    
+    private var color: UIColor {
+        switch self {
+        case ImageInstructions:       return Color.White.color
+        case DescriptionInstructions: return Color.White.color
         }
     }
 }

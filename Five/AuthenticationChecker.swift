@@ -12,9 +12,13 @@ import Firebase
 protocol AuthenticationChecker {}
 
 extension AuthenticationChecker {
-    func checkForCurrentUser() -> User? {
+    func checkForCurrentUser(withResult: Result<User> -> Void) {
+        let error = NSError(domain: "Five", code: 2, userInfo: [NSLocalizedDescriptionKey: ""])
         let auth = FIRAuth.auth()
-        guard let key = auth?.currentUser?.uid, email = auth?.currentUser?.email, username = auth?.currentUser?.displayName  else { return nil }
-        return User(key: key, email: email, username: username)
+        guard let key = auth?.currentUser?.uid else {
+            withResult(.Failure(error))
+            return
+        }
+        User.loadValue(withKey: key, forType: User.self) { withResult($0) }
     }
 }
