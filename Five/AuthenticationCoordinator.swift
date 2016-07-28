@@ -15,7 +15,7 @@ protocol AuthenticationCoordinatorDelegate: class {
 
 // MARK: - AuthenticationCoordinator
 
-final class AuthenticationCoordinator: Coordinator, AuthenticationChecker, AuthenticationViewModelCoordinatorDelegate {
+final class AuthenticationCoordinator: Coordinator, AuthenticationChecker, AuthenticationViewModelCoordinatorDelegate, UIImagePickerControllerDelegate {
     
     weak var coordinatorDelegate: AuthenticationCoordinatorDelegate?
     
@@ -67,6 +67,10 @@ final class AuthenticationCoordinator: Coordinator, AuthenticationChecker, Authe
     
     func navigateToLoginViewController() {
         rootViewController.pushViewController(loginViewController, animated: true)
+    }
+    
+    func displayUserPhotos() {
+        <#code#>
     }
 }
 
