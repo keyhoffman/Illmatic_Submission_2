@@ -10,31 +10,69 @@ import Foundation
 import UIKit
 
 protocol AuthenticationCoordinatorDelegate: class {
-    func userHasBeenAuthenticated(user: User)
+    func userHasBeenAuthenticated(user user: User)
 }
 
 // MARK: - AuthenticationCoordinator
 
-class AuthenticationCoordinator: Coordinator, AuthenticationChecker {
+final class AuthenticationCoordinator: Coordinator, AuthenticationChecker, AuthenticationViewModelCoordinatorDelegate {
+    
+    weak var coordinatorDelegate: AuthenticationCoordinatorDelegate?
     
     private let window: UIWindow
     private let rootViewController = UINavigationController()
     
-    weak var coordinatorDelegate: AuthenticationCoordinatorDelegate?
+    private let signUpViewController = AuthenticationViewController()
+    private let loginViewController  = AuthenticationViewController()
     
-    let vc = AuthenticationViewController()
+    private let signUpViewModel: AuthenticationViewModelType
+    private let loginViewModel:  AuthenticationViewModelType
+    
+    private let authenticationModel: AuthenticationModelType
     
     init(window: UIWindow) {
         self.window = window
+        
+        signUpViewModel = AuthenticationViewModel(isSigningUp: true)
+        loginViewModel  = AuthenticationViewModel(isSigningUp: false)
+        
+        authenticationModel = AuthenticationModel()
+        
+        signUpViewController.viewModel = signUpViewModel
+        loginViewController.viewModel  = loginViewModel
+        
+        signUpViewModel.model = authenticationModel
+        loginViewModel.model  = authenticationModel
+        
+        signUpViewModel.coordinatorDelegate = self
+        loginViewModel.coordinatorDelegate  = self
     }
     
     func start() {
-        if let user = checkForCurrentUser() { coordinatorDelegate?.userHasBeenAuthenticated(user) }
+        if let user = checkForCurrentUser() { coordinatorDelegate?.userHasBeenAuthenticated(user: user) }
         else {
             window.rootViewController = rootViewController
             window.makeKeyAndVisible()
-            rootViewController.pushViewController(vc, animated: false)
+            rootViewController.pushViewController(signUpViewController, animated: false)
         }
-        
+    }
+    
+    func userHasBeenAuthenticated(user user: User) {
+        coordinatorDelegate?.userHasBeenAuthenticated(user: user)
+    }
+    
+    func anErrorHasOccured(errorMessage: String) {
+        print("ERROR: \(errorMessage)")
+    }
+    
+    func navigateToLoginViewController() {
+        rootViewController.pushViewController(loginViewController, animated: true)
     }
 }
+
+
+
+
+
+
+

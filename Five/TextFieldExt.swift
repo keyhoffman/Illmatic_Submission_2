@@ -20,7 +20,7 @@ extension UITextField {
         self.adjustsFontSizeToFitWidth = true
         self.autocapitalizationType    = .None
         self.autocorrectionType        = .No
-        self.clearButtonMode           = .Always
+        self.clearButtonMode           = .WhileEditing
         self.keyboardAppearance        = .Dark
         self.keyboardType              = .Default
     }

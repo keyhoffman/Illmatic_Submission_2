@@ -14,7 +14,7 @@
 		034D8E7D1D47EF21001A6499 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8E7C1D47EF21001A6499 /* ApplicationCoordinator.swift */; };
 		034D8E7F1D47EF3E001A6499 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8E7E1D47EF3E001A6499 /* Coordinator.swift */; };
 		034D8E841D47F576001A6499 /* AuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8E831D47F576001A6499 /* AuthenticationCoordinator.swift */; };
-		034D8E861D47F582001A6499 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8E851D47F582001A6499 /* TabBarCoordinator.swift */; };
+		034D8E861D47F582001A6499 /* MainTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8E851D47F582001A6499 /* MainTabBarCoordinator.swift */; };
 		034D8E8A1D47F90E001A6499 /* AuthenticationChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8E891D47F90E001A6499 /* AuthenticationChecker.swift */; };
 		034D8E8C1D47F95C001A6499 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8E8B1D47F95C001A6499 /* User.swift */; };
 		034D8E901D47FA9C001A6499 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8E8F1D47FA9C001A6499 /* AuthenticationViewController.swift */; };
@@ -29,6 +29,16 @@
 		034D8EA51D4820ED001A6499 /* FirebaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EA41D4820ED001A6499 /* FirebaseType.swift */; };
 		034D8EA81D482129001A6499 /* Dumpable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EA71D482129001A6499 /* Dumpable.swift */; };
 		034D8EAB1D48486F001A6499 /* General.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EAA1D48486F001A6499 /* General.swift */; };
+		034D8EAD1D495906001A6499 /* AuthViewControllerStyleSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EAC1D495906001A6499 /* AuthViewControllerStyleSheet.swift */; };
+		034D8EB01D495958001A6499 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EAF1D495958001A6499 /* Configurable.swift */; };
+		034D8EB21D495969001A6499 /* ViewPreparer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EB11D495969001A6499 /* ViewPreparer.swift */; };
+		034D8EB71D496A99001A6499 /* DiscoverCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EB61D496A99001A6499 /* DiscoverCoordinator.swift */; };
+		034D8EB91D496AA6001A6499 /* CalenderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EB81D496AA6001A6499 /* CalenderCoordinator.swift */; };
+		034D8EBB1D496AB2001A6499 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EBA1D496AB2001A6499 /* ProfileCoordinator.swift */; };
+		034D8EBD1D496AC5001A6499 /* CreateEventCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EBC1D496AC5001A6499 /* CreateEventCoordinator.swift */; };
+		034D8EBF1D497685001A6499 /* MainTabStyleSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EBE1D497685001A6499 /* MainTabStyleSheet.swift */; };
+		034D8EC11D498019001A6499 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EC01D498019001A6499 /* MainTabController.swift */; };
+		034D8EC71D4997DE001A6499 /* ArrayExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EC61D4997DE001A6499 /* ArrayExt.swift */; };
 		27D695914B3DA5EEB1B9B0E5 /* Pods_Five.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66CF4E1DAF8057152A18FC30 /* Pods_Five.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,7 +52,7 @@
 		034D8E7C1D47EF21001A6499 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		034D8E7E1D47EF3E001A6499 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		034D8E831D47F576001A6499 /* AuthenticationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationCoordinator.swift; sourceTree = "<group>"; };
-		034D8E851D47F582001A6499 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		034D8E851D47F582001A6499 /* MainTabBarCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarCoordinator.swift; sourceTree = "<group>"; };
 		034D8E891D47F90E001A6499 /* AuthenticationChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationChecker.swift; sourceTree = "<group>"; };
 		034D8E8B1D47F95C001A6499 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		034D8E8F1D47FA9C001A6499 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +67,16 @@
 		034D8EA41D4820ED001A6499 /* FirebaseType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseType.swift; sourceTree = "<group>"; };
 		034D8EA71D482129001A6499 /* Dumpable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dumpable.swift; sourceTree = "<group>"; };
 		034D8EAA1D48486F001A6499 /* General.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = General.swift; sourceTree = "<group>"; };
+		034D8EAC1D495906001A6499 /* AuthViewControllerStyleSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewControllerStyleSheet.swift; sourceTree = "<group>"; };
+		034D8EAF1D495958001A6499 /* Configurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
+		034D8EB11D495969001A6499 /* ViewPreparer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPreparer.swift; sourceTree = "<group>"; };
+		034D8EB61D496A99001A6499 /* DiscoverCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverCoordinator.swift; sourceTree = "<group>"; };
+		034D8EB81D496AA6001A6499 /* CalenderCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderCoordinator.swift; sourceTree = "<group>"; };
+		034D8EBA1D496AB2001A6499 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		034D8EBC1D496AC5001A6499 /* CreateEventCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventCoordinator.swift; sourceTree = "<group>"; };
+		034D8EBE1D497685001A6499 /* MainTabStyleSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabStyleSheet.swift; sourceTree = "<group>"; };
+		034D8EC01D498019001A6499 /* MainTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
+		034D8EC61D4997DE001A6499 /* ArrayExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExt.swift; sourceTree = "<group>"; };
 		66CF4E1DAF8057152A18FC30 /* Pods_Five.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Five.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EAFFFCF70BC22B1F8FB4BA7 /* Pods-Five.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Five.release.xcconfig"; path = "Pods/Target Support Files/Pods-Five/Pods-Five.release.xcconfig"; sourceTree = "<group>"; };
 		F61965016B6A8DC6EF919DE7 /* Pods-Five.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Five.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Five/Pods-Five.debug.xcconfig"; sourceTree = "<group>"; };
@@ -148,8 +168,8 @@
 		034D8E821D47F541001A6499 /* SubCoordinators */ = {
 			isa = PBXGroup;
 			children = (
-				034D8E831D47F576001A6499 /* AuthenticationCoordinator.swift */,
-				034D8E851D47F582001A6499 /* TabBarCoordinator.swift */,
+				034D8EB31D496A3E001A6499 /* AuthenticationCoordinator */,
+				034D8EB41D496A52001A6499 /* MainTabBarCoordinator */,
 			);
 			name = SubCoordinators;
 			sourceTree = "<group>";
@@ -169,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				034D8E8F1D47FA9C001A6499 /* AuthenticationViewController.swift */,
+				034D8EC01D498019001A6499 /* MainTabController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -197,6 +218,7 @@
 				034D8E9A1D48034C001A6499 /* DictionaryExt.swift */,
 				034D8E9C1D480353001A6499 /* StringExt.swift */,
 				034D8E9E1D480366001A6499 /* ColorExt.swift */,
+				034D8EC61D4997DE001A6499 /* ArrayExt.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -213,9 +235,49 @@
 		034D8EA91D484854001A6499 /* StyleSheets */ = {
 			isa = PBXGroup;
 			children = (
+				034D8EAE1D495933001A6499 /* Protocols */,
 				034D8EAA1D48486F001A6499 /* General.swift */,
+				034D8EAC1D495906001A6499 /* AuthViewControllerStyleSheet.swift */,
+				034D8EBE1D497685001A6499 /* MainTabStyleSheet.swift */,
 			);
 			name = StyleSheets;
+			sourceTree = "<group>";
+		};
+		034D8EAE1D495933001A6499 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				034D8EAF1D495958001A6499 /* Configurable.swift */,
+				034D8EB11D495969001A6499 /* ViewPreparer.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		034D8EB31D496A3E001A6499 /* AuthenticationCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				034D8E831D47F576001A6499 /* AuthenticationCoordinator.swift */,
+			);
+			name = AuthenticationCoordinator;
+			sourceTree = "<group>";
+		};
+		034D8EB41D496A52001A6499 /* MainTabBarCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				034D8E851D47F582001A6499 /* MainTabBarCoordinator.swift */,
+				034D8EB51D496A70001A6499 /* SubCoordinators */,
+			);
+			name = MainTabBarCoordinator;
+			sourceTree = "<group>";
+		};
+		034D8EB51D496A70001A6499 /* SubCoordinators */ = {
+			isa = PBXGroup;
+			children = (
+				034D8EB61D496A99001A6499 /* DiscoverCoordinator.swift */,
+				034D8EB81D496AA6001A6499 /* CalenderCoordinator.swift */,
+				034D8EBA1D496AB2001A6499 /* ProfileCoordinator.swift */,
+				034D8EBC1D496AC5001A6499 /* CreateEventCoordinator.swift */,
+			);
+			name = SubCoordinators;
 			sourceTree = "<group>";
 		};
 		49A343FC5F2EB1EAF3713F64 /* Pods */ = {
@@ -359,21 +421,31 @@
 			files = (
 				034D8E671D47EDAE001A6499 /* AppDelegate.swift in Sources */,
 				034D8E9D1D480353001A6499 /* StringExt.swift in Sources */,
+				034D8EC11D498019001A6499 /* MainTabController.swift in Sources */,
 				034D8E7D1D47EF21001A6499 /* ApplicationCoordinator.swift in Sources */,
+				034D8EBB1D496AB2001A6499 /* ProfileCoordinator.swift in Sources */,
+				034D8EB21D495969001A6499 /* ViewPreparer.swift in Sources */,
+				034D8EB01D495958001A6499 /* Configurable.swift in Sources */,
 				034D8E991D48033E001A6499 /* TextFieldExt.swift in Sources */,
+				034D8EB91D496AA6001A6499 /* CalenderCoordinator.swift in Sources */,
+				034D8EAD1D495906001A6499 /* AuthViewControllerStyleSheet.swift in Sources */,
 				034D8E841D47F576001A6499 /* AuthenticationCoordinator.swift in Sources */,
 				034D8EA31D480523001A6499 /* AuthenticationModel.swift in Sources */,
+				034D8EBF1D497685001A6499 /* MainTabStyleSheet.swift in Sources */,
 				034D8E8A1D47F90E001A6499 /* AuthenticationChecker.swift in Sources */,
 				034D8EA11D4804BD001A6499 /* Result.swift in Sources */,
+				034D8EC71D4997DE001A6499 /* ArrayExt.swift in Sources */,
 				034D8E9B1D48034C001A6499 /* DictionaryExt.swift in Sources */,
 				034D8E901D47FA9C001A6499 /* AuthenticationViewController.swift in Sources */,
 				034D8EA51D4820ED001A6499 /* FirebaseType.swift in Sources */,
-				034D8E861D47F582001A6499 /* TabBarCoordinator.swift in Sources */,
+				034D8E861D47F582001A6499 /* MainTabBarCoordinator.swift in Sources */,
 				034D8E931D48013B001A6499 /* AuthenticationViewModel.swift in Sources */,
 				034D8E961D480233001A6499 /* ErrorDelegate.swift in Sources */,
 				034D8E7F1D47EF3E001A6499 /* Coordinator.swift in Sources */,
 				034D8E8C1D47F95C001A6499 /* User.swift in Sources */,
+				034D8EB71D496A99001A6499 /* DiscoverCoordinator.swift in Sources */,
 				034D8E9F1D480366001A6499 /* ColorExt.swift in Sources */,
+				034D8EBD1D496AC5001A6499 /* CreateEventCoordinator.swift in Sources */,
 				034D8EAB1D48486F001A6499 /* General.swift in Sources */,
 				034D8EA81D482129001A6499 /* Dumpable.swift in Sources */,
 			);

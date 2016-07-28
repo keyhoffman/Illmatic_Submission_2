@@ -10,38 +10,83 @@ import Foundation
 import UIKit
 import SnapKit
 
-class AuthenticationViewController: UIViewController, UITextFieldDelegate {
-    let im = UIImageView()
-    let canBut = Button.Cancel.button
-    let saveBut = Button.SaveEvent.button
+final class AuthenticationViewController: UIViewController, UITextFieldDelegate, AuthenticationViewModelViewDelegate {
+    
+    // MARK: - AuthenticationViewModelType Declaration
+    
+    weak var viewModel: AuthenticationViewModelType? {
+        didSet { viewModel?.viewDelegate = self }
+    }
+    
+    // MARK: - UIBarButtonItem Declaration
+    
+    private let navigateToLoginButton = AuthViewControllerStyleSheet.BarButtonItem.NavigateToLogin.barButtonItem
+    
+    // MARK: - TextField Declarations
+    
+    let emailTextField    = AuthViewControllerStyleSheet.TextField.Email.textField
+    let passwordTextField = AuthViewControllerStyleSheet.TextField.Password.textField
+    let usernameTextField = AuthViewControllerStyleSheet.TextField.Username.textField
+    
+    // MARK: - ViewController Lifecycle
+    // TODO:   Add A Prepare Method!!!!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = Color.FiveRed.color
-        
-        view.addSubview(im)
-        view.addSubview(canBut)
-        view.addSubview(saveBut)
-        
-        im.image = IconAssest.HandGray.icon
-        
-        im.snp_makeConstraints { make in
-            make.height.equalTo(50)
-            make.width.equalTo(50)
-            make.top.equalTo(view.snp_top)
-            make.centerX.equalTo(view.snp_centerX)
+        setTextFieldsAndErrorLabel()
+        AuthViewControllerStyleSheet.Prepare(self)
+    }
+    
+    // MARK: - TextField Delegate Methods
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        guard let text = textField.text else { return false }
+        if text.isEmpty { return false }
+        switch textField {
+        case emailTextField:    viewModel?.email    = text
+        case passwordTextField: viewModel?.password = text
+        case usernameTextField: viewModel?.username = text
+        default: fatalError("Invalid textfield")
         }
+        return true
+    }
+    
+    // MARK: - AuthenticationViewModelViewDelegate Methods
+    
+    func emailIsValid() {
+        emailTextField.resignFirstResponder()
+        passwordTextField.becomeFirstResponder()
+        passwordTextField.hidden = false
+    }
+    
+    func passwordIsValid() {
+        passwordTextField.resignFirstResponder()
+        usernameTextField.becomeFirstResponder()
+        usernameTextField.hidden = false
+    }
+    
+    // MARK: - Set View Properties
+    
+    func setLoginNavigationItem() {
+        navigateToLoginButton.target = self
+        navigateToLoginButton.action = #selector(navigateToLoginButtonPressed)
+        navigationItem.rightBarButtonItem = navigateToLoginButton
+    }
+    
+    func navigateToLoginButtonPressed() {
+        viewModel?.navigateToLoginViewController()
+    }
+    
+    func setVCTitle(title: String) {
+        self.title = title
+    }
+    
+    private func setTextFieldsAndErrorLabel() {
+        emailTextField.delegate    = self
+        passwordTextField.delegate = self
+        usernameTextField.delegate = self
         
-        saveBut.snp_makeConstraints { (make) in
-            make.center.equalTo(view.snp_center)
-        }
-        
-        canBut.snp_makeConstraints { (make) in
-            make.centerX.equalTo(view.snp_centerX)
-            make.top.equalTo(saveBut.snp_bottom)
-        }
+        emailTextField.becomeFirstResponder()
     }
 }
 
-// 55 112 255

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Firebase // TODO: DELETE
 
 // MARK: - ApplicationCoordinator
 /**
@@ -19,7 +20,7 @@ import UIKit
  the ApplicationCoordinator via their respective delegates.
  */
 
-class ApplicationCoordinator: Coordinator {
+final class ApplicationCoordinator: Coordinator, AuthenticationCoordinatorDelegate, MainTabBarCoordinatorDelegate {
     
     // MARK: UIWindow Declaration
     /**
@@ -28,17 +29,30 @@ class ApplicationCoordinator: Coordinator {
     
     private let window: UIWindow
     
+    private let tabBarCoordinator:         MainTabBarCoordinator
     private let authenticationCoordinator: AuthenticationCoordinator
     
     init(window: UIWindow) {
         self.window = window
         
-        authenticationCoordinator = AuthenticationCoordinator(window: window)
+        tabBarCoordinator         = MainTabBarCoordinator(window: self.window)
+        authenticationCoordinator = AuthenticationCoordinator(window: self.window)
+        
+        tabBarCoordinator.coordinatorDelegate         = self
+        authenticationCoordinator.coordinatorDelegate = self
     }
     
     // MARK: Coordinator Implementation Methods
     
     func start() {
+//        try! FIRAuth.auth()?.signOut() // TODO: DELETE
         authenticationCoordinator.start()
+    }
+    
+    // MARK: AuthenticationCoordinatorDelegate Implementation Methods
+    
+    func userHasBeenAuthenticated(user user: User) {
+        user.dump_()
+        tabBarCoordinator.start()
     }
 }

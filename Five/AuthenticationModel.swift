@@ -11,7 +11,7 @@ import Firebase
 
 // MARK: - AuthenticationModelProtocol
 
-protocol AuthenticationModelType: class {
+protocol AuthenticationModelType {
     func login(email email: String, password: String, withResult: Result<User> -> Void)
     func signUp(email email: String, password: String, username: String, withResult: Result<User> -> Void)
 }
@@ -19,16 +19,15 @@ protocol AuthenticationModelType: class {
 
 // MARK: - AuthenticationModel
 
-final class AuthenticationModel: AuthenticationModelType {
+struct AuthenticationModel: AuthenticationModelType {
     
-    typealias UserResult = Result<User> -> Void
+    typealias UserResultBlock = Result<User> -> Void
     
     // MARK: AuthenticationModelProtocol Required Methods
     
-    func login(email email: String, password: String, withResult: UserResult) {
+    func login(email email: String, password: String, withResult: UserResultBlock) {
         FIRAuth.auth()?.signInWithEmail(email, password: password) { user, error in
             if let error = error {
-                print(error.localizedDescription)
                 withResult(.Failure(error))
                 return
             }
@@ -39,15 +38,13 @@ final class AuthenticationModel: AuthenticationModelType {
             }
             let loggedInUser = User(key: user.uid, email: email, username: username)
             withResult(.Success(loggedInUser))
-            return
         }
         
     }
     
-    func signUp(email email: String, password: String, username: String, withResult: UserResult) {
+    func signUp(email email: String, password: String, username: String, withResult: UserResultBlock) {
         FIRAuth.auth()?.createUserWithEmail(email, password: password) { user, error in
             if let error = error {
-                print(error.localizedDescription)
                 withResult(.Failure(error))
                 return
             }
@@ -60,16 +57,13 @@ final class AuthenticationModel: AuthenticationModelType {
             changeRequest.displayName = username
             changeRequest.commitChangesWithCompletion { error in
                 if let error = error {
-                    print(error.localizedDescription)
                     withResult(.Failure(error))
                     return
                 }
                 let logggedInUser = User(key: user.uid, email: email, username: username)
                 logggedInUser.sendToFB { result in
                     withResult(result)
-                    return
                 }
-                return
             }
         }
     }

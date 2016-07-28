@@ -11,18 +11,20 @@ import UIKit
 
 enum Color {
     case FiveBlue    // Create Tab Color, Join + Save Event Button Color, in-app logo
-    case FiveBlueBG  // Join Event Background
+    case FiveBlueTrans  // Join Event Background
     case FiveRed     // Card x button, title color, mail paper airplane color
     case FiveGray    // Background Color
     case FiveOrange  // navigation barbutton color, tabBarItem none selected item image outline color
+    case White
     
     var color: UIColor {
         switch self {
-        case FiveBlue:   return .fiveBlue(withAlpha: 1.0)
-        case FiveBlueBG: return .fiveBlue(withAlpha: 0.8)
-        case FiveRed:    return .fiveRed()
-        case FiveGray:   return .fiveGray()
-        case FiveOrange: return .fiveOrange()
+        case FiveBlue:      return .fiveBlue(withAlpha: 1.0)
+        case FiveBlueTrans: return .fiveBlue(withAlpha: 0.8)
+        case FiveRed:       return .fiveRed()
+        case FiveGray:      return .fiveGray()
+        case FiveOrange:    return .fiveOrange()
+        case White:         return .whiteColor()
         }
     }
 }
@@ -49,8 +51,8 @@ enum Button {
     
     private var property: (title: String?, color: UIColor?, image: UIImage?) {
         switch self {
-        case JoinEvent:  return ("Join Eventttttttttttttttttt", Color.FiveBlue.color, nil)
-        case SaveEvent:  return ("Save Eventttttttttttttttttt", Color.FiveBlue.color, nil)
+        case JoinEvent:  return ("Join Event", Color.FiveBlue.color, nil)
+        case SaveEvent:  return ("Save Event", Color.FiveBlue.color, nil)
         case Cancel:     return (nil, nil, IconAssest.CancelEvent.icon)
         case SendInvite: return (nil, nil, IconAssest.PaperPlaneInvite.icon)
         }

@@ -12,7 +12,7 @@ import Foundation
 
 protocol AuthenticationViewModelCoordinatorDelegate: class, ErrorDelegate {
     func userHasBeenAuthenticated(user user: User)
-    func navigateToLoginButtonPressed()
+    func navigateToLoginViewController()
 }
 
 // MARK: - AuthenticationViewModelViewDelegate
@@ -25,26 +25,40 @@ protocol AuthenticationViewModelViewDelegate: class {
 }
 
 
-//MARK: - AuthenticationViewModelType
+// MARK: - AuthenticationViewModelType
 
 protocol AuthenticationViewModelType: class {
-    
     var email:    String { get set }
     var password: String { get set }
     var username: String { get set }
     
+    var model: AuthenticationModelType? { get set }
+    
     weak var viewDelegate:        AuthenticationViewModelViewDelegate?        { get set }
     weak var coordinatorDelegate: AuthenticationViewModelCoordinatorDelegate? { get set }
-    weak var model:               AuthenticationModelType?                    { get set }
     
-    func navigateToLogin()
+    func navigateToLoginViewController()
+    
+    init(isSigningUp: Bool)
 }
 
-class AuthenticationViewModel: AuthenticationViewModelType {
+// MARK: - AuthenticationViewModel
+
+final class AuthenticationViewModel: AuthenticationViewModelType {
     
-    weak var viewDelegate:        AuthenticationViewModelViewDelegate?
+    var model: AuthenticationModelType?
+    
     weak var coordinatorDelegate: AuthenticationViewModelCoordinatorDelegate?
-    weak var model:               AuthenticationModelType?
+    weak var viewDelegate:        AuthenticationViewModelViewDelegate? {
+        didSet {
+            switch isSigningUp {
+            case false: viewDelegate?.setVCTitle(AuthViewControllerStyleSheet.LoginTitle)
+            case true:  viewDelegate?.setVCTitle(AuthViewControllerStyleSheet.SignUpTitle)
+                        viewDelegate?.setLoginNavigationItem()
+            }
+        }
+        
+    }
     
     var email: String = .emptyString() {
         didSet {
@@ -78,12 +92,12 @@ class AuthenticationViewModel: AuthenticationViewModelType {
 
     // MARK: - User Input Validation Declarations
     
-    let validPasswordCharacterCount = 5 //AuthViewModelStyleSheet.ValidPasswordCharacterCount
-    let validUsernameCharacterCount = 5 //AuthViewModelStyleSheet.ValidUsernameCharacterCount
+    private let validPasswordCharacterCount = 5 //AuthViewModelStyleSheet.ValidPasswordCharacterCount
+    private let validUsernameCharacterCount = 5 //AuthViewModelStyleSheet.ValidUsernameCharacterCount
     
-    var emailIsValid    = false
-    var passwordIsValid = false
-    var usernameIsValid = false
+    private var emailIsValid    = false
+    private var passwordIsValid = false
+    private var usernameIsValid = false
     
     private var canSubmitAuthenticationRequest: Bool {
         switch isSigningUp {
@@ -102,8 +116,8 @@ class AuthenticationViewModel: AuthenticationViewModelType {
     }
 
     
-    func navigateToLogin() {
-        
+    func navigateToLoginViewController() {
+        coordinatorDelegate?.navigateToLoginViewController()
     }
     
     // MARK: - Authentication Submission Methods
@@ -120,7 +134,7 @@ class AuthenticationViewModel: AuthenticationViewModelType {
     
     private func handleAuthenticationResult(result: Result<User>) {
         switch result {
-        case .Failure(let error): self.coordinatorDelegate?.anErrorHasOccured(error._domain)
+        case .Failure(let error): self.coordinatorDelegate?.anErrorHasOccured(error.localizedDescription)
         case .Success(let user):  self.coordinatorDelegate?.userHasBeenAuthenticated(user: user)
         }
     }
@@ -128,8 +142,8 @@ class AuthenticationViewModel: AuthenticationViewModelType {
     // MARK: - User Input Validation Methods
     
     private func validateEmailFormat(email: String) -> Bool {
-        let format    = "SELF MATCHES %@"
-        let arguments = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,32}"
+        let format    = AuthViewControllerStyleSheet.ValidEmailPredicateFormat
+        let arguments = AuthViewControllerStyleSheet.ValidEmailPredicateArguments
         return NSPredicate(format: format, arguments).evaluateWithObject(email)
     }
     
