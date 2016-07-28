@@ -24,9 +24,9 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate,
     
     // MARK: - TextField Declarations
     
-    let emailTextField    = AuthViewControllerStyleSheet.TextField.Email.textField 
-    let passwordTextField = AuthViewControllerStyleSheet.TextField.Password.textField
-    let usernameTextField = AuthViewControllerStyleSheet.TextField.Username.textField
+    let emailTextField    = AuthViewControllerStyleSheet.AuthTextField.Email.textfield
+    let passwordTextField = AuthViewControllerStyleSheet.AuthTextField.Password.textfield
+    let usernameTextField = AuthViewControllerStyleSheet.AuthTextField.Username.textfield
     
     let addProfileImageButton = AuthViewControllerStyleSheet.AuthButton.AddProfileImage.button
     
@@ -42,8 +42,7 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate,
     // MARK: - TextField Delegate Methods
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        guard let text = textField.text else { return false }
-        if text.isEmpty { return false }
+        guard let text = textField.text where !text.isEmpty else { return false }
         switch textField {
         case emailTextField:    viewModel?.email    = text
         case passwordTextField: viewModel?.password = text

@@ -21,8 +21,24 @@ struct AuthViewControllerStyleSheet: ViewPreparer {
     static let ValidEmailPredicateArguments = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,32}"
     static let ValidEmailPredicateFormat    = "SELF MATCHES %@"
 
+    private static let emailTextFieldWidthToViewWidthFactor   = 0.80
+    private static let emailTextFieldHeightToViewHeightFactor = 0.05
+    private static let emailTextFieldTopToViewTopOffsetFactor = 0.20
+    
+    private static let addImageButtonWidthToViewWidthFactor   = 0.60
+    private static let addImageButtonTopToViewTopOffsetFactor = 0.20
+    
     static func Prepare(authVC: AuthenticationViewController) {
         authVC.view.backgroundColor = Color.FiveBlue.color
+        
+        let viewHeight = authVC.view.bounds.height
+        
+        let emailTextFieldTopToViewTopOffset = viewHeight * CGFloat(emailTextFieldTopToViewTopOffsetFactor)
+        let addImageButtonTopToViewTopOffset = viewHeight * CGFloat(addImageButtonTopToViewTopOffsetFactor)
+        
+        authVC.passwordTextField.hidden     = true
+        authVC.usernameTextField.hidden     = true
+        authVC.addProfileImageButton.hidden = true
         
         authVC.emailTextField.becomeFirstResponder()
         
@@ -32,9 +48,9 @@ struct AuthViewControllerStyleSheet: ViewPreparer {
         
         authVC.emailTextField.snp_makeConstraints { make in
             make.centerX.equalTo(authVC.view.snp_centerX)
-            make.width.equalTo(authVC.view).multipliedBy(0.80)
-            make.height.equalTo(authVC.view).multipliedBy(0.05)
-            make.top.equalTo(authVC.view).offset(authVC.view.bounds.height * 0.20)
+            make.width.equalTo(authVC.view).multipliedBy(emailTextFieldWidthToViewWidthFactor)
+            make.height.equalTo(authVC.view).multipliedBy(emailTextFieldHeightToViewHeightFactor)
+            make.top.equalTo(authVC.view).offset(emailTextFieldTopToViewTopOffset)
         }
         
         authVC.passwordTextField.snp_makeConstraints { make in
@@ -50,55 +66,29 @@ struct AuthViewControllerStyleSheet: ViewPreparer {
             make.top.equalTo(authVC.passwordTextField.snp_bottom)
             make.height.equalTo(authVC.emailTextField)
         }
+        
+        authVC.addProfileImageButton.snp_makeConstraints { make in // MAKE CIRCLE
+            make.width.equalTo(authVC.view).multipliedBy(addImageButtonWidthToViewWidthFactor)
+            make.height.equalTo(authVC.addProfileImageButton.snp_width)
+            make.top.equalTo(authVC.view).offset(addImageButtonTopToViewTopOffset)
+        }
     }
     
     // MARK: - AuthTextField
-    // TODO: MOVE TEXTFIELDS ELSEWHERE!!!!
-    enum TextField {
-        case Email, Password, Username
+    
+    enum AuthTextField {
+        case Email, Password, Username, Description
         
-        var textField: UITextField {
-            let tf = UITextField()
-            tf.defaultSettings()
-            tf.placeholder     = placeholder
-            tf.backgroundColor = Color.White.color
-            tf.secureTextEntry = secureTextEntry
-            tf.hidden          = hidden
-            tf.borderStyle     = .RoundedRect
-            tf.keyboardType    = self.keyboardType
-            return tf
-        }
-        
-        private var placeholder: String {
+        var textfield: UITextField {
             switch self {
-            case Email:    return "Enter your email"
-            case Password: return "Enter your password"
-            case Username: return "Enter your username"
-            }
-        }
-        
-        private var secureTextEntry: Bool {
-            switch self {
-            case Password: return true
-            default:       return false
-            }
-        }
-        
-        private var hidden: Bool {
-            switch self {
-            case Email: return false
-            default:    return true
-            }
-        }
-        
-        private var keyboardType: UIKeyboardType {
-            switch self {
-            case Email: return .EmailAddress
-            default:    return .Default
+            case Email:       return TextField.Email.textField
+            case Password:    return TextField.Password.textField
+            case Username:    return TextField.Username.textField
+            case Description: return TextField.UserDescription.textField
             }
         }
     }
-    
+        
     // MARK: - BarButtonItem
     
     enum BarButtonItem {

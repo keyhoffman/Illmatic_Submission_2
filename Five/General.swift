@@ -51,11 +51,51 @@ enum Button {
     
     private var property: (title: String?, color: UIColor?, image: UIImage?) {
         switch self {
-        case JoinEvent:  return ("Join Event", Color.FiveBlue.color, nil)
-        case SaveEvent:  return ("Save Event", Color.FiveBlue.color, nil)
-        case Cancel:     return (nil, nil, IconAssest.CancelEvent.icon)
-        case SendInvite: return (nil, nil, IconAssest.PaperPlaneInvite.icon)
+        case JoinEvent:       return ("Join Event", Color.FiveBlue.color, nil)
+        case SaveEvent:       return ("Save Event", Color.FiveBlue.color, nil)
+        case Cancel:          return (nil, nil, IconAssest.CancelEvent.icon)
+        case SendInvite:      return (nil, nil, IconAssest.PaperPlaneInvite.icon)
         case AddProfileImage: return ("Tap to add a profile image", Color.FiveBlueTrans.color, nil)
         }
     }
 }
+
+enum TextField {
+    case Email, Password, Username, UserDescription
+    
+    var textField: UITextField {
+        let tf = UITextField()
+        tf.defaultSettings()
+        tf.placeholder     = placeholder
+        tf.backgroundColor = Color.White.color
+        tf.secureTextEntry = secureTextEntry
+        tf.borderStyle     = .RoundedRect
+        tf.keyboardType    = keyboardType
+        return tf
+    }
+    
+    private var placeholder: String {
+        switch self {
+        case Email:           return "Enter your email"
+        case Password:        return "Enter your password"
+        case Username:        return "Enter your username"
+        case UserDescription: return "Tell us something interesting!"
+        }
+    }
+    
+    private var secureTextEntry: Bool {
+        switch self {
+        case Password: return true
+        default:       return false
+        }
+    }
+    
+    private var keyboardType: UIKeyboardType {
+        switch self {
+        case Email: return .EmailAddress
+        default:    return .Default
+        }
+    }
+}
+
+
