@@ -13,19 +13,29 @@ protocol CreateEventCoordinatorDelegate: class, ErrorDelegate {
     
 }
 
-final class CreateEventCoordinator: Coordinator {
+final class CreateEventCoordinator: Coordinator, CreateEventViewModelCoordinatorDelegate {
     
     weak var coordinatorDelegate: CreateEventCoordinatorDelegate?
     
     private let navigationController: UINavigationController
     
+    private let createEventViewController = CreateEventViewController()
+    
+    private let createEventViewModel: CreateEventViewModelType
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+        
+        createEventViewModel = CreateEventViewModel()
+        
+        createEventViewController.viewModel = createEventViewModel
+        
+        createEventViewModel.coordinatorDelegate = self
     }
 
     
     func start() {
-        
+//        navigationController.presentViewController(createEventViewController, animated: false, completion: nil)
     }
 }
 

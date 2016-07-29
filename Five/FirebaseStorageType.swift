@@ -11,6 +11,8 @@ import Firebase
 
 protocol FBStorageType {
     var storagePath: String { get }
+    
+    static var ImageName: String { get }
 }
 
 extension FBStorageType {

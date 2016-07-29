@@ -19,7 +19,7 @@ typealias FBDictionary = [String : AnyObject]
 protocol FBType: Equatable, Dumpable {
     var key: String { get }
     
-    static var Path: String          { get }
+    static var Path:         String  { get }
     static var NeedsAutoKey: Bool    { get }
     static var FBSubKeys:   [String] { get }
     
@@ -106,6 +106,12 @@ extension FBType {
                 return
             }
         }
+    }
+}
+
+extension FBType {
+    static func FBString(object: AnyObject) -> String? {
+        return object as? String
     }
 }
 

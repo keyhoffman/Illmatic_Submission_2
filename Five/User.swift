@@ -19,10 +19,10 @@ struct User: FBType, FBStorageType {
 // MARK: - User Extension
 
 extension User {
-    static let Path             = "users/"
-    static let NeedsAutoKey     = false
-    static let FBSubKeys        = ["username", "email", "rating", "description", "storagePath"]
-    static let ProfileImageName = "/profileImage.png"
+    static let Path         = "users/"
+    static let NeedsAutoKey = false
+    static let FBSubKeys    = ["username", "email", "rating", "description", "storagePath"]
+    static let ImageName    = "/profileImage.png"
 }
 
 // MARK: - User "createNew" Initializer Extension
@@ -30,8 +30,10 @@ extension User {
 
 extension User {
     static func Create(FBDict: FBDictionary?) -> Result<User> {
-        guard let email = FBDict?["email"] as? String, let username = FBDict?["username"] as? String, let key = FBDict?["key"] as? String,
-            let description = FBDict?["description"] as? String, let storagePath = FBDict?["storagePath"] as? String else { return .Failure(instantiationError) }
+        guard let email =  FBDict?["email"] >>> FBString, let username = FBDict?["username"] >>> FBString, let key = FBDict?["key"] >>> FBString,
+            let description = FBDict?["description"] >>> FBString, let storagePath = FBDict?["storagePath"] >>> FBString else {
+                return .Failure(instantiationError)
+        }
         
         return .Success(User(key: key, email: email, username: username, description: description, storagePath: storagePath))
     }
@@ -40,5 +42,8 @@ extension User {
 // MARK: - User Equatability
 
 func == (lhs: User, rhs: User) -> Bool {
-    return lhs.key == rhs.key && lhs.username == rhs.username && lhs.email == rhs.email
+    return lhs.key == rhs.key 
 }
+
+
+

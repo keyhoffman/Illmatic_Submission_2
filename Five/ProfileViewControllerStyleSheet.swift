@@ -36,6 +36,8 @@ struct ProfileViewControllerStyleSheet: ViewPreparer {
         
         profileVC.view.backgroundColor = Color.FiveGray.color
         
+        profileVC.title = "Profile"
+        
         let viewHeight = profileVC.view.bounds.height
         
         let imageViewTopToViewTopOffset = viewHeight * CGFloat(imageViewTopToViewTopOffsetFactor)

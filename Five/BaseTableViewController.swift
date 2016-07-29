@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableViewController<Cell: UITableViewCell where Cell: Configurable>: UITableViewController {
+class DynamicTableViewController<Cell: UITableViewCell where Cell: Configurable>: UITableViewController {
     typealias DataType = Cell.DataType
     
     // MARK: - Cell Identifier Declaration
@@ -17,14 +17,7 @@ class TableViewController<Cell: UITableViewCell where Cell: Configurable>: UITab
     
     // MARK: - Data Declaration
     
-    var data: [DataType] = [] {
-        didSet {
-            tableView.reloadData()
-            //            if tableView.numberOfRowsInSection(0) > 0 {
-            //                tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: .Top, animated: true)
-            //            }
-        }
-    }
+    var data: [DataType] = [] { didSet { tableView.reloadData() } }
     
     // MARK: - TableViewController Initializer
     

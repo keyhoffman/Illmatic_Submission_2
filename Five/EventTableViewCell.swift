@@ -8,9 +8,21 @@
 
 import UIKit
 
-class EventTableViewCell: UITableViewCell, Configurable {
+final class EventTableViewCell: UITableViewCell, Configurable {
+    
+    var eventView: EventView?
+    
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     func configure(withItem event: Event) {
-        <#code#>
+        eventView = EventView(frame: self.frame, event: event)
+        EventCellStyleSheet.Prepare(self)
     }
 }

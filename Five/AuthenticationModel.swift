@@ -44,7 +44,7 @@ struct AuthenticationModel: AuthenticationModelType {
                 return
             }
             guard let newUser = newUser, email = newUser.email else { return }
-            let imagePath = newUser.uid + User.ProfileImageName
+            let imagePath = newUser.uid + User.ImageName
             let user = User(key: newUser.uid, email: email, username: username, description: description, storagePath: imagePath)
             user.uploadToStorage(withData: data) { error in
                 if let error = error {

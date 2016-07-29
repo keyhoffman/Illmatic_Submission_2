@@ -18,7 +18,7 @@ protocol MainTabBarCoordinatorDelegate: class {
 
 // MARK: - MainTabBarCoordinator
 
-final class MainTabBarCoordinator: Coordinator, DiscoverCoordinatorDelegate, CalenderCoordinatorDelegate, ProfileCoordinatorDelegate, CreateEventCoordinatorDelegate {
+final class MainTabBarCoordinator: Coordinator, DiscoverCoordinatorDelegate, CalenderCoordinatorDelegate, ProfileCoordinatorDelegate, CreateEventCoordinatorDelegate, MainTabBarViewModelCoordinatorDelegate {
     
     // MARK: - TabBarCoordinatorDelegate Declaration
     
@@ -28,6 +28,8 @@ final class MainTabBarCoordinator: Coordinator, DiscoverCoordinatorDelegate, Cal
     
     private let window: UIWindow
     private let rootViewController: MainTabController
+    
+    private let mainTabBarViewModel: MainTabBarViewModelType
     
     private let discoverCoordinator:    DiscoverCoordinator
     private let calenderCoordinator:    CalenderCoordinator
@@ -41,6 +43,9 @@ final class MainTabBarCoordinator: Coordinator, DiscoverCoordinatorDelegate, Cal
     
     init(window: UIWindow, user: User) {
         self.window = window
+        
+        mainTabBarViewModel = MainTabBarViewModel()
+//        mainTabBarViewModel.coordinatorDelegate = self
         
         discoverNavigationController.tabBarItem    = MainTabBarStyleSheet.TabBarItem.Discover.tabBarItem
         calenderNavigationController.tabBarItem    = MainTabBarStyleSheet.TabBarItem.Calender.tabBarItem
@@ -74,7 +79,7 @@ final class MainTabBarCoordinator: Coordinator, DiscoverCoordinatorDelegate, Cal
     func anErrorHasOccured(errorMessage: String) {
         let errorPopup = PopupDialog(title: "Error", message: errorMessage)
         ErrorPopoverStyleSheet.Prepare(errorPopup)
-        rootViewController.presentViewController(errorPopup, animated: true, completion: nil)
+//        rootViewController.presentViewController(errorPopup, animated: true, completion: nil)
     }
     
 }

@@ -73,14 +73,15 @@ enum Button {
 }
 
 enum Label {
-    case ImageInstructions, DescriptionInstructions, Username, UserDescription, UserContactInfo
+    case ImageInstructions, DescriptionInstructions, Username, UserDescription, UserContactInfo, EventViewTitle
     
     var label: UILabel {
         let l = UILabel()
         l.text = text
         l.textColor = textColor
         l.textAlignment = .Center
-        l.font = Font.HelveticaNeueMedium(size: 14).font
+        l.font = fontAndSize
+        l.numberOfLines = 0
         return l
     }
     
@@ -99,6 +100,14 @@ enum Label {
         case Username:                return Color.Black.color
         case UserDescription:         return Color.Black.color
         case UserContactInfo:         return Color.Black.color
+        case EventViewTitle:          return Color.White.color
+        }
+    }
+    
+    private var fontAndSize: UIFont {
+        switch self {
+        case EventViewTitle: return Font.HelveticaNeue(size: 24).font
+        default:             return Font.HelveticaNeueMedium(size: 14).font
         }
     }
 }
