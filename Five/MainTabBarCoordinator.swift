@@ -8,11 +8,12 @@
 
 import Foundation
 import UIKit
+import PopupDialog
 
 // MARK: - TabBarCoordinatorDelegate Protocol
 
 protocol MainTabBarCoordinatorDelegate: class {
-    
+
 }
 
 // MARK: - MainTabBarCoordinator
@@ -38,7 +39,7 @@ final class MainTabBarCoordinator: Coordinator, DiscoverCoordinatorDelegate, Cal
     private let profileNavigationController     = UINavigationController()
     private let createEventNavigationController = UINavigationController()
     
-    init(window: UIWindow) {
+    init(window: UIWindow, user: User) {
         self.window = window
         
         discoverNavigationController.tabBarItem    = MainTabBarStyleSheet.TabBarItem.Discover.tabBarItem
@@ -52,7 +53,7 @@ final class MainTabBarCoordinator: Coordinator, DiscoverCoordinatorDelegate, Cal
         
         discoverCoordinator    = DiscoverCoordinator(navigationController: discoverNavigationController)
         calenderCoordinator    = CalenderCoordinator(navigationController: calenderNavigationController)
-        profileCoordinator     = ProfileCoordinator(navigationController: profileNavigationController)
+        profileCoordinator     = ProfileCoordinator(navigationController: profileNavigationController, user: user)
         createEventCoordinator = CreateEventCoordinator(navigationController: createEventNavigationController)
         
         discoverCoordinator.coordinatorDelegate    = self
@@ -60,7 +61,6 @@ final class MainTabBarCoordinator: Coordinator, DiscoverCoordinatorDelegate, Cal
         profileCoordinator.coordinatorDelegate     = self
         createEventCoordinator.coordinatorDelegate = self
     }
-    
     
     func start() {
         window.rootViewController = rootViewController
@@ -70,6 +70,13 @@ final class MainTabBarCoordinator: Coordinator, DiscoverCoordinatorDelegate, Cal
         profileCoordinator.start()
         createEventCoordinator.start()
     }
+    
+    func anErrorHasOccured(errorMessage: String) {
+        let errorPopup = PopupDialog(title: "Error", message: errorMessage)
+        ErrorPopoverStyleSheet.Prepare(errorPopup)
+        rootViewController.presentViewController(errorPopup, animated: true, completion: nil)
+    }
+    
 }
 
 

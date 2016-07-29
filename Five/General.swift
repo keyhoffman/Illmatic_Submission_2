@@ -15,16 +15,19 @@ enum Color {
     case FiveRed     // Card x button, title color, mail paper airplane color
     case FiveGray    // Background Color
     case FiveOrange  // navigation barbutton color, tabBarItem none selected item image outline color
-    case White
+    case White, DarkGray, WhiteGrayScale08, Black
     
     var color: UIColor {
         switch self {
-        case FiveBlue:      return .fiveBlue(withAlpha: 1.0)
-        case FiveBlueTrans: return .fiveBlue(withAlpha: 0.8)
-        case FiveRed:       return .fiveRed()
-        case FiveGray:      return .fiveGray()
-        case FiveOrange:    return .fiveOrange()
-        case White:         return .whiteColor()
+        case FiveBlue:         return .fiveBlue(withAlpha: 1.0)
+        case FiveBlueTrans:    return .fiveBlue(withAlpha: 0.8)
+        case FiveRed:          return .fiveRed()
+        case FiveGray:         return .fiveGray()
+        case FiveOrange:       return .fiveOrange()
+        case White:            return .whiteColor()
+        case DarkGray:         return .darkGray()
+        case WhiteGrayScale08: return .whiteGrayScale08()
+        case Black:            return .blackColor()
         }
     }
 }
@@ -53,15 +56,16 @@ enum Button {
         b.setTitle(self.property.title, forState: .Normal)
         b.backgroundColor = self.property.color
         b.setImage(self.property.image, forState: .Normal)
+        b.titleLabel?.font = Font.HelveticaNeueMedium(size: 14).font
         return b
     }
     
     private var property: (title: String?, color: UIColor?, image: UIImage?) {
         switch self {
-        case JoinEvent:       return ("Join Event", Color.FiveBlue.color, nil)
-        case SaveEvent:       return ("Save Event", Color.FiveBlue.color, nil)
-        case Cancel:          return (nil, nil, IconAssest.CancelEvent.icon)
-        case SendInvite:      return (nil, nil, IconAssest.PaperPlaneInvite.icon)
+        case JoinEvent:          return ("Join Event", Color.FiveBlue.color, nil)
+        case SaveEvent:          return ("Save Event", Color.FiveBlue.color, nil)
+        case Cancel:             return (nil, nil, IconAssest.CancelEvent.icon)
+        case SendInvite:         return (nil, nil, IconAssest.PaperPlaneInvite.icon)
         case AddImageFromPhotos: return ("Photos", Color.FiveRed.color, nil)
         case AddImageFromCamera: return ("Selfie", Color.FiveOrange.color, nil)
         }
@@ -69,27 +73,32 @@ enum Button {
 }
 
 enum Label {
-    case ImageInstructions, DescriptionInstructions
+    case ImageInstructions, DescriptionInstructions, Username, UserDescription, UserContactInfo
     
     var label: UILabel {
         let l = UILabel()
         l.text = text
-        l.textColor = color
+        l.textColor = textColor
         l.textAlignment = .Center
+        l.font = Font.HelveticaNeueMedium(size: 14).font
         return l
     }
     
-    private var text: String {
+    private var text: String? {
         switch self {
         case ImageInstructions:       return "Select an image for your profile"
         case DescriptionInstructions: return "Write a one line bio!"
+        default:                      return nil
         }
     }
     
-    private var color: UIColor {
+    private var textColor: UIColor {
         switch self {
         case ImageInstructions:       return Color.White.color
         case DescriptionInstructions: return Color.White.color
+        case Username:                return Color.Black.color
+        case UserDescription:         return Color.Black.color
+        case UserContactInfo:         return Color.Black.color
         }
     }
 }
@@ -131,5 +140,50 @@ enum TextField {
         }
     }
 }
+
+// MARK: - Font
+
+enum Font {
+    case HelveticaNeue(size: CGFloat)
+    case HelveticaNeueLight(size: CGFloat)
+    case HelveticaNeueMedium(size: CGFloat)
+    
+    var font: UIFont! {
+        switch self {
+        case .HelveticaNeue(let size):       return UIFont(name: "HelveticaNeue", size: size)
+        case .HelveticaNeueLight(let size):  return UIFont(name: "HelveticaNeue-Light", size: size)
+        case .HelveticaNeueMedium(let size): return UIFont(name: "HelveticaNeue-Medium", size: size)
+        }
+    }
+}
+
+enum ActivityIndicator {
+    case WhiteLarge, White, Gray
+    
+    var indicator: UIActivityIndicatorView {
+        let i = UIActivityIndicatorView()
+        i.activityIndicatorViewStyle                = style
+        i.hidesWhenStopped                          = true
+        i.translatesAutoresizingMaskIntoConstraints = false
+        return i
+    }
+    
+    private var style: UIActivityIndicatorViewStyle {
+        switch self {
+        case WhiteLarge: return .WhiteLarge
+        case White:      return .White
+        case Gray:       return .Gray
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
 
 

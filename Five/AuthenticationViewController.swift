@@ -34,6 +34,8 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate,
     let imageInstructionsLabel       = AuthViewControllerStyleSheet.AuthLabel.ImageInstructions.label
     let descriptionInstructionsLabel = AuthViewControllerStyleSheet.AuthLabel.DescriptionInstructions.label
     
+    let spinner = AuthViewControllerStyleSheet.AuthActivityIndicator.AuthenicationActivity.indicator
+    
     // MARK: - ViewController Lifecycle
     
     override func viewDidLoad() {
@@ -94,6 +96,11 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate,
         descriptionTextField.becomeFirstResponder()
         
         descriptionTextField.hidden = false
+    }
+    
+    func startActivityIndicator() {
+        spinner.hidden = false
+        spinner.startAnimating()
     }
     
     // MARK: - Set View Properties

@@ -21,4 +21,5 @@ extension AuthenticationChecker {
         }
         User.loadValue(withKey: key, forType: User.self) { withResult($0) }
     }
+    
 }

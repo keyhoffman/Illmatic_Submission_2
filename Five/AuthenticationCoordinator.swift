@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import PopupDialog
 
 protocol AuthenticationCoordinatorDelegate: class {
     func userHasBeenAuthenticated(user user: User)
@@ -71,12 +72,15 @@ final class AuthenticationCoordinator: Coordinator, AuthenticationChecker, Authe
         }
     }
     
+    
     func userHasBeenAuthenticated(user user: User) {
         coordinatorDelegate?.userHasBeenAuthenticated(user: user)
     }
     
     func anErrorHasOccured(errorMessage: String) {
-        print("ERROR: \(errorMessage)")
+        let errorPopup = PopupDialog(title: "Error", message: errorMessage)
+        ErrorPopoverStyleSheet.Prepare(errorPopup)
+        rootViewController.presentViewController(errorPopup, animated: true, completion: nil)
     }
     
     func navigateToLoginViewController() {

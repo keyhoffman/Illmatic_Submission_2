@@ -33,6 +33,7 @@ struct AuthViewControllerStyleSheet: ViewPreparer {
     private static let descriptionTextFieldTopToAddImageButtonButtonOffset = 40.0
     
     static func Prepare(authVC: AuthenticationViewController) {
+        
         authVC.view.backgroundColor = Color.FiveBlue.color
         
         let viewHeight = authVC.view.bounds.height
@@ -52,6 +53,8 @@ struct AuthViewControllerStyleSheet: ViewPreparer {
         authVC.descriptionInstructionsLabel.hidden = true
         authVC.imageInstructionsLabel.hidden       = true
         
+        authVC.spinner.hidden = true
+        
         authVC.view.addSubview(authVC.emailTextField)
         authVC.view.addSubview(authVC.passwordTextField)
         authVC.view.addSubview(authVC.usernameTextField)
@@ -60,6 +63,7 @@ struct AuthViewControllerStyleSheet: ViewPreparer {
         authVC.view.addSubview(authVC.addProfileImageFromPhotosButton)
         authVC.view.addSubview(authVC.descriptionInstructionsLabel)
         authVC.view.addSubview(authVC.imageInstructionsLabel)
+        authVC.view.addSubview(authVC.spinner)
         
         authVC.emailTextField.snp_makeConstraints { make in
             make.centerX.equalTo(authVC.view.snp_centerX)
@@ -117,6 +121,10 @@ struct AuthViewControllerStyleSheet: ViewPreparer {
             make.centerX.equalTo(authVC.view)
         }
         
+        authVC.spinner.snp_makeConstraints { make in
+            make.center.equalTo(authVC.view.snp_center)
+        }
+        
     }
     
     // MARK: - AuthTextField
@@ -165,6 +173,14 @@ struct AuthViewControllerStyleSheet: ViewPreparer {
             case ImageInstructions:       return Label.ImageInstructions.label
             case DescriptionInstructions: return Label.DescriptionInstructions.label
             }
+        }
+    }
+    
+    enum AuthActivityIndicator {
+        case AuthenicationActivity
+        
+        var indicator: UIActivityIndicatorView {
+            return ActivityIndicator.WhiteLarge.indicator
         }
     }
     

@@ -50,11 +50,13 @@ extension FBType {
         let path = Self.NeedsAutoKey ? Self.Path + autoKey : Self.Path + key
         print("path = \(path)")
         Self.RootRef.child(path).setValue(FBDict) { error, _ in
-            if let error = error {
-                withResult(.Failure(error))
-                return
+            performUpdatesOnMainThread {
+                if let error = error {
+                    withResult(.Failure(error))
+                    return
+                }
+                withResult(.Success(self))
             }
-            withResult(.Success(self))
         }
     }
     
@@ -88,17 +90,21 @@ extension FBType {
     
     private static func observe<T: FBType>(withEventType event: FIRDataEventType, forModelType model: T.Type, withPath path: String, withBlock: Result<T> -> Void) {
         Self.RootRef.child(path).observeEventType(event, withBlock: { (snapshot: FIRDataSnapshot) in
-            guard var FBDict = snapshot.value as? FBDictionary else { // TODO: Is it okay to make FBDict mutable?
-                print("Resource loading fail")
-                withBlock(.Failure(self.snapshotError))
+            performUpdatesOnMainThread {
+                guard var FBDict = snapshot.value as? FBDictionary else {
+                    print("Resource loading fail")
+                    withBlock(.Failure(self.snapshotError))
+                    return
+                }
+                FBDict["key"] = snapshot.key
+                withBlock(model.Create(FBDict))
                 return
             }
-            FBDict["key"] = snapshot.key
-            withBlock(model.Create(FBDict))
-            return
         }) { error in
-            withBlock(.Failure(error))
-            return
+            performUpdatesOnMainThread {
+                withBlock(.Failure(error))
+                return
+            }
         }
     }
 }

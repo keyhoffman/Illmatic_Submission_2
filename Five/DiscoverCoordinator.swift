@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol DiscoverCoordinatorDelegate: class {
+protocol DiscoverCoordinatorDelegate: class, ErrorDelegate {
     
 }
 

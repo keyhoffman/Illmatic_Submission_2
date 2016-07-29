@@ -27,6 +27,7 @@ protocol AuthenticationViewModelViewDelegate: class {
     func profileImageHasBeenSet()
     func setLoginNavigationItem()
     func setVCTitle(title: String)
+    func startActivityIndicator()
 }
 
 
@@ -151,6 +152,8 @@ final class AuthenticationViewModel: AuthenticationViewModelType {
             coordinatorDelegate?.anErrorHasOccured("Invalid Authentication Request") // TODO: Move string literal elsewhere
             return
         }
+        
+        viewDelegate?.startActivityIndicator()
         
         if isSigningUp  { guard let imageData = profileImageData else {
                 coordinatorDelegate?.anErrorHasOccured("Invalid image data")

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol CalenderCoordinatorDelegate: class {
+protocol CalenderCoordinatorDelegate: class, ErrorDelegate {
     
 }
 

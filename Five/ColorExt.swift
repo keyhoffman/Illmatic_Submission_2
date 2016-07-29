@@ -25,4 +25,12 @@ extension UIColor {
     static func fiveOrange() -> UIColor {
         return UIColor(red: 244/255, green: 85/255, blue: 18/255, alpha: 1.0)
     }
+    
+    static func darkGray() -> UIColor {
+        return UIColor(red:0.23, green:0.23, blue:0.27, alpha:1.00)
+    }
+    
+    static func whiteGrayScale08() -> UIColor {
+        return UIColor(white: 0.8, alpha: 1)
+    }
 }
