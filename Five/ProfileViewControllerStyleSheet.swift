@@ -14,7 +14,8 @@ extension UIImageView {
     func makeCircular() {
         let radius = CGRectGetWidth(self.frame) / 2
         self.layer.cornerRadius = radius
-        self.layer.masksToBounds = true
+        self.layer.masksToBounds = false
+        self.clipsToBounds = true
     }
 }
 

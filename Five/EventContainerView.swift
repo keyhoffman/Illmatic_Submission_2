@@ -13,6 +13,10 @@ final class EventContainerView: UIView {
     let eventView: EventView
     let eventDetailView: EventDetailView
     
+    let eventViews: [UIView]
+    
+    let creatorImageView = UIImageView()
+    
     let event: Event
     
     let userTap = UITapGestureRecognizer()
@@ -26,6 +30,8 @@ final class EventContainerView: UIView {
         
         eventView = EventView(frame: frame, event: event)
         eventDetailView = EventDetailView(frame: frame, event: event)
+        
+        eventViews = [eventDetailView, eventView]
         
         super.init(frame: frame)
         

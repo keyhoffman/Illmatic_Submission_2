@@ -15,7 +15,7 @@ enum Color {
     var color: UIColor {
         switch self {
         case FiveBlue:         return .fiveBlue(withAlpha: 1.0)
-        case FiveBlueTrans:    return .fiveBlue(withAlpha: 0.8)
+        case FiveBlueTrans:    return .fiveBlue(withAlpha: 0.6)
         case FiveRed:          return .fiveRed()
         case FiveGray:         return .fiveGray()
         case FiveOrange:       return .fiveOrange()

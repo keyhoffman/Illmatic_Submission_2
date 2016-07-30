@@ -26,9 +26,11 @@ struct EventDetailViewStyleSheet: ViewPreparer {
     private static let detailsLabelTopToTopSeperatorBottomOffsetByViewHeightFactor:        CGFloat = 0.07
     private static let bottomSeperatorTopToDetailsLabelBottomOffsetByViewHeightFactor:     CGFloat = 0.08
     private static let descriptionLabelTopToBottomSeperatorBottomOffsetByViewHeightFactor: CGFloat = 0.07
-    private static let joinEventBottomTopToDescriptionLabelBottomOffsetByViewHeightFactor: CGFloat = 0.10
+    private static let joinEventBottomTopToDescriptionLabelBottomOffsetByViewHeightFactor: CGFloat = 0.08
     
     static func Prepare(eventDetailView: EventDetailView) {
+        
+        defer { eventDetailView.layoutIfNeeded() }
         
         eventDetailView.backgroundColor = Color.White.color
         
@@ -71,8 +73,6 @@ struct EventDetailViewStyleSheet: ViewPreparer {
         }
         
         for view in eventDetailView.eventDetailSubViews where view is UILabel {
-            view.layer.borderColor = Color.Black.color.CGColor
-//            view.layer.borderWidth = CGFloat(1)
             view.snp_makeConstraints { make in
                 make.width.equalTo(eventDetailView.snp_width).multipliedBy(labelWidthToViewWidthFactor)
             }
@@ -103,7 +103,9 @@ struct EventDetailViewStyleSheet: ViewPreparer {
         }
         
         eventDetailView.joinEventButton.snp_makeConstraints { make in
-            make.top.equalTo(eventDetailView.descriptionLabel.snp_bottom).offset(joinEventBottomTopToDescriptionLabelBottomOffset)
+            make.top.lessThanOrEqualTo(eventDetailView.descriptionLabel.snp_bottom).offset(joinEventBottomTopToDescriptionLabelBottomOffset).priorityLow()
+//            make.bottom.greaterThanOrEqualTo(eventDetailView.snp_bottom).priorityHigh()
+            make.bottom.lessThanOrEqualTo(eventDetailView.snp_bottom).offset(100).priorityHigh()
             make.width.equalTo(eventDetailView.snp_width).multipliedBy(joinEventButtonWidthToViewWidthFactor)
             make.height.equalTo(eventDetailView.snp_height).multipliedBy(joinEventButtonHeightToViewHeightFactor)
         }

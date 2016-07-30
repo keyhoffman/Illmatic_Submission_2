@@ -13,7 +13,7 @@ import SnapKit
 struct EventCellStyleSheet: ViewPreparer {
     
     static private let eventContainerViewWidthToEventCellWidthFactor   = 0.90
-    static private let eventContainerViewHeightToEventCellHeightFactor = 0.80
+    static private let eventContainerViewHeightToEventCellHeightFactor = 0.75
     
     static func Prepare(eventCell: EventTableViewCell) {
         

@@ -17,6 +17,12 @@ struct DiscoverTableViewControllerStyleSheet: ViewPreparer {
         discoverTVC.tableView.allowsSelection = false
         discoverTVC.view.backgroundColor = Color.FiveGray.color
         
-        discoverTVC.navigationController?.navigationItem.titleView = UIImageView(image: IconAssest.FiveLogo.icon)
+        let titleImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: 38))
+        titleImageView.image = IconAssest.FiveLogo.icon
+        titleImageView.contentMode = .ScaleAspectFit
+        
+        discoverTVC.navigationItem.titleView = titleImageView
+        
+        discoverTVC.navigationController?.navigationBar.barTintColor = Color.White.color
     }
 }
