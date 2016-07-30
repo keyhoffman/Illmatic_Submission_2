@@ -15,9 +15,7 @@ final class EventContainerView: UIView {
     
     let eventViews: [UIView]
     
-    let creatorImageView = UIImageView()
-    
-    let event: Event
+    let hostImageView = UIImageView()
     
     let userTap = UITapGestureRecognizer()
     
@@ -25,11 +23,10 @@ final class EventContainerView: UIView {
     
     var flipAnimationDuration = 0.5
     
-    init(frame: CGRect, event: Event) {
-        self.event = event
-        
+    init(frame: CGRect, event: Event, host: User, hostProfileImageData imageData: NSData) {
+        hostImageView.image = UIImage(data: imageData)
         eventView = EventView(frame: frame, event: event)
-        eventDetailView = EventDetailView(frame: frame, event: event)
+        eventDetailView = EventDetailView(frame: frame, event: event, host: host)
         
         eventViews = [eventDetailView, eventView]
         

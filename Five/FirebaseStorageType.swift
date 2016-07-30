@@ -18,12 +18,18 @@ protocol FBStorageType {
 extension FBStorageType {
     private var bucket: String { return "gs://five-dfc81.appspot.com" }
     var storageRef: FIRStorageReference { return FIRStorage.storage().referenceForURL(bucket).child(storagePath) }
-    var maxSize: Int64 { return 1 * 4096 * 4096 }
+    var maxSize: Int64 { return 1 * 8192 * 4096 }
 }
 
 extension FBType where Self: FBStorageType {
     func uploadToStorage(withData data: NSData, withError: NSError? -> Void) {
         storageRef.putData(data, metadata: nil) { _, error in
+            if let error = error {
+                print("ERROR")
+                print(error.localizedDescription)
+            } else {
+                print("No ERROR")
+            }
             performUpdatesOnMainThread {
                 withError(error)
             }

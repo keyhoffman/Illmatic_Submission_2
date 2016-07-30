@@ -14,7 +14,7 @@ struct EventContainerViewStyleSheet: ViewPreparer {
     
     private static let eventViewCornerRadius: CGFloat = 30
     
-    private static let creatorImageViewHeightToViewHeightFactor = 0.15
+    private static let hostImageViewHeightToViewHeightFactor: CGFloat = 0.10
     
     static func Prepare(eventContainerView: EventContainerView) {
         
@@ -32,24 +32,18 @@ struct EventContainerViewStyleSheet: ViewPreparer {
             }
         }
 
-        eventContainerView.addSubview(eventContainerView.creatorImageView)
+        eventContainerView.addSubview(eventContainerView.hostImageView)
         
-        eventContainerView.creatorImageView.image = ImageAssest.SurferAtSunset.image
-        eventContainerView.creatorImageView.contentMode = .ScaleAspectFit
+        let hostImageViewHeight = eventContainerView.frame.height * hostImageViewHeightToViewHeightFactor
         
-        eventContainerView.creatorImageView.snp_makeConstraints { make in
-            make.height.equalTo(eventContainerView.snp_height).multipliedBy(creatorImageViewHeightToViewHeightFactor)
-            make.width.equalTo(eventContainerView.snp_height).multipliedBy(creatorImageViewHeightToViewHeightFactor)
+        eventContainerView.hostImageView.makeCircular(withHeight: hostImageViewHeight)
+        
+        eventContainerView.hostImageView.snp_makeConstraints { make in
+            make.height.equalTo(hostImageViewHeight)
+            make.width.equalTo(hostImageViewHeight)
             make.centerX.equalTo(eventContainerView.snp_centerX)
             make.centerY.equalTo(eventContainerView.snp_top)
         }
-        
-        let viewHeight = eventContainerView.frame.height * CGFloat(creatorImageViewHeightToViewHeightFactor)
-        
-        print("viewHeight = \(viewHeight)")
-        
-        eventContainerView.creatorImageView.frame = CGRect(x: 0, y: 0, width: 75, height: viewHeight)
-        eventContainerView.creatorImageView.makeCircular()
         
         
     }

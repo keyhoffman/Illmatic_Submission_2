@@ -34,6 +34,8 @@ struct AuthViewControllerStyleSheet: ViewPreparer {
     
     static func Prepare(authVC: AuthenticationViewController) {
         
+        defer { authVC.view.layoutIfNeeded() }
+        
         authVC.view.backgroundColor = Color.FiveBlue.color
         
         let viewHeight = authVC.view.bounds.height

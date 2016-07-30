@@ -22,13 +22,15 @@ final class EventDetailView: UIView {
     let joinEventButton = EventDetailViewStyleSheet.EventDetailButton.JoinEvent.button
     
     let event: Event
+    let host:  User
     
     let eventDetailSubViews: [UIView]
     
     let seperators: [UILabel]
     
-    init(frame: CGRect, event: Event) {
+    init(frame: CGRect, event: Event, host: User) {
         self.event = event
+        self.host = host
         
         eventDetailSubViews = [hostLabel, titleLabel, detailsLabel, descriptionLabel, joinEventButton]
         

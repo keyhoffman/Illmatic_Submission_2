@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		031C9D9B1D4C8AD6009A0A86 /* SeperatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031C9D9A1D4C8AD6009A0A86 /* SeperatorView.swift */; };
+		031C9D9D1D4D407A009A0A86 /* ImageViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031C9D9C1D4D407A009A0A86 /* ImageViewExt.swift */; };
 		034D8E671D47EDAE001A6499 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8E661D47EDAE001A6499 /* AppDelegate.swift */; };
 		034D8E6E1D47EDAE001A6499 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 034D8E6D1D47EDAE001A6499 /* Assets.xcassets */; };
 		034D8E711D47EDAE001A6499 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 034D8E6F1D47EDAE001A6499 /* LaunchScreen.storyboard */; };
@@ -72,6 +73,7 @@
 
 /* Begin PBXFileReference section */
 		031C9D9A1D4C8AD6009A0A86 /* SeperatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeperatorView.swift; sourceTree = "<group>"; };
+		031C9D9C1D4D407A009A0A86 /* ImageViewExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewExt.swift; sourceTree = "<group>"; };
 		034D8E631D47EDAE001A6499 /* Five.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Five.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		034D8E661D47EDAE001A6499 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		034D8E6D1D47EDAE001A6499 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 				034D8E9E1D480366001A6499 /* ColorExt.swift */,
 				034D8EC61D4997DE001A6499 /* ArrayExt.swift */,
 				034D8ECA1D49C99F001A6499 /* TabBarControllerExt.swift */,
+				031C9D9C1D4D407A009A0A86 /* ImageViewExt.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -767,6 +770,7 @@
 				034D8ED91D4AE4D5001A6499 /* ProfileViewModel.swift in Sources */,
 				03BDED9D1D4C1FAA005C9050 /* EventCellStyleSheet.swift in Sources */,
 				034D8EE51D4B1D99001A6499 /* Event.swift in Sources */,
+				031C9D9D1D4D407A009A0A86 /* ImageViewExt.swift in Sources */,
 				034D8E8C1D47F95C001A6499 /* User.swift in Sources */,
 				034D8ECF1D4A9BB1001A6499 /* ImagePickerViewModel.swift in Sources */,
 				034D8ECD1D49F28F001A6499 /* ImagePickerViewController.swift in Sources */,

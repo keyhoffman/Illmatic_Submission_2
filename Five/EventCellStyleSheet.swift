@@ -17,6 +17,8 @@ struct EventCellStyleSheet: ViewPreparer {
     
     static func Prepare(eventCell: EventTableViewCell) {
         
+        defer { eventCell.layoutIfNeeded() }
+        
         eventCell.backgroundColor = Color.FiveGray.color
         
         guard let eventContainerView = eventCell.eventContainerView else { return }

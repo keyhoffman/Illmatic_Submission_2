@@ -12,6 +12,9 @@ final class EventTableViewCell: UITableViewCell, Configurable {
     
     var eventContainerView: EventContainerView?
     
+    var host: User?
+    
+    var hostProfileImageData: NSData?
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -22,7 +25,8 @@ final class EventTableViewCell: UITableViewCell, Configurable {
     }
 
     func configure(withItem event: Event) {
-        eventContainerView = EventContainerView(frame: self.frame, event: event)
+        guard let host = host, let imageData = hostProfileImageData else { return }
+        eventContainerView = EventContainerView(frame: self.frame, event: event, host: host, hostProfileImageData: imageData)
         EventCellStyleSheet.Prepare(self)
     }
 }

@@ -17,6 +17,8 @@ struct EventViewStyleSheet: ViewPreparer {
     
     static func Prepare(eventView: EventView) {
         
+        defer { eventView.layoutIfNeeded() }
+        
         eventView.titleLabel.text = eventView.event.title
         eventView.backgroundColor = Color.FiveBlue.color
         

@@ -13,6 +13,8 @@ struct DiscoverTableViewControllerStyleSheet: ViewPreparer {
     
     static func Prepare(discoverTVC: DiscoverTableViewController) {
         
+        defer { discoverTVC.view.layoutIfNeeded() }
+        
         discoverTVC.tableView.rowHeight = discoverTVC.view.frame.height
         discoverTVC.tableView.allowsSelection = false
         discoverTVC.view.backgroundColor = Color.FiveGray.color

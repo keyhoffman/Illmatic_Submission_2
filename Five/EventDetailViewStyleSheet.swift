@@ -26,7 +26,7 @@ struct EventDetailViewStyleSheet: ViewPreparer {
     private static let detailsLabelTopToTopSeperatorBottomOffsetByViewHeightFactor:        CGFloat = 0.07
     private static let bottomSeperatorTopToDetailsLabelBottomOffsetByViewHeightFactor:     CGFloat = 0.08
     private static let descriptionLabelTopToBottomSeperatorBottomOffsetByViewHeightFactor: CGFloat = 0.07
-    private static let joinEventBottomTopToDescriptionLabelBottomOffsetByViewHeightFactor: CGFloat = 0.08
+    private static let joinEventBottomTopToDescriptionLabelBottomOffsetByViewHeightFactor: CGFloat = 0.03
     
     static func Prepare(eventDetailView: EventDetailView) {
         
@@ -46,7 +46,7 @@ struct EventDetailViewStyleSheet: ViewPreparer {
         
         let event = eventDetailView.event
         
-        let hostLabelText        = "Host: " + event.creatorKey
+        let hostLabelText        = "Host: " + eventDetailView.host.username
         let titleLabelText       = event.title
         let detailsLabelText     = event.date + "\n" + event.location
         let descriptionLabelText = event.description
@@ -104,10 +104,8 @@ struct EventDetailViewStyleSheet: ViewPreparer {
         
         eventDetailView.joinEventButton.snp_makeConstraints { make in
             make.top.lessThanOrEqualTo(eventDetailView.descriptionLabel.snp_bottom).offset(joinEventBottomTopToDescriptionLabelBottomOffset).priorityLow()
-//            make.bottom.greaterThanOrEqualTo(eventDetailView.snp_bottom).priorityHigh()
             make.bottom.lessThanOrEqualTo(eventDetailView.snp_bottom).offset(100).priorityHigh()
             make.width.equalTo(eventDetailView.snp_width).multipliedBy(joinEventButtonWidthToViewWidthFactor)
-            make.height.equalTo(eventDetailView.snp_height).multipliedBy(joinEventButtonHeightToViewHeightFactor)
         }
     }
     

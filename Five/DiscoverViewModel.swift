@@ -14,6 +14,8 @@ protocol DiscoverViewModelCoordinatorDelegate: class, ErrorDelegate {
 
 protocol DiscoverViewModelViewDelegate: class {
     func appendEvent(event: Event)
+    func appendHost(user: User)
+    func appendHostProfileImageData(data: NSData)
 }
 
 protocol DiscoverViewModelType: class {
@@ -32,7 +34,28 @@ final class DiscoverViewModel: DiscoverViewModelType {
         Event.loadChildAdded { result in
             switch result {
             case .Failure(let error): self.coordinatorDelegate?.anErrorHasOccured(error.localizedDescription)
-            case .Success(let event): self.viewDelegate?.appendEvent(event)
+            case .Success(let event): self.loadHost(forEvent: event)
+            }
+        }
+    }
+    
+    private func loadHost(forEvent event: Event) {
+        Event.loadValue(withKey: event.creatorKey, forType: User.self) { result in
+            switch result {
+            case .Failure(let error): self.coordinatorDelegate?.anErrorHasOccured(error.localizedDescription)
+            case .Success(let host): self.loadProfileImage(forHost: host, atEvent: event)
+                
+            }
+        }
+    }
+    
+    private func loadProfileImage(forHost host: User, atEvent event: Event) {
+        host.loadImageData { result in
+            switch result {
+            case .Failure(let error):     self.coordinatorDelegate?.anErrorHasOccured(error.localizedDescription)
+            case .Success(let imageData): self.viewDelegate?.appendEvent(event)
+                                          self.viewDelegate?.appendHost(host)
+                                          self.viewDelegate?.appendHostProfileImageData(imageData)
             }
         }
     }
