@@ -35,7 +35,9 @@ final class CreateEventCoordinator: Coordinator, CreateEventViewModelCoordinator
 
     
     func start() {
-//        navigationController.presentViewController(createEventViewController, animated: false, completion: nil)
+        if navigationController.topViewController?.isKindOfClass(CreateEventViewController) == nil {
+            navigationController.presentViewController(createEventViewController, animated: false, completion: nil)
+        }
     }
 }
 

@@ -45,7 +45,6 @@ final class MainTabBarCoordinator: Coordinator, DiscoverCoordinatorDelegate, Cal
         self.window = window
         
         mainTabBarViewModel = MainTabBarViewModel()
-//        mainTabBarViewModel.coordinatorDelegate = self
         
         discoverNavigationController.tabBarItem    = MainTabBarStyleSheet.TabBarItem.Discover.tabBarItem
         calenderNavigationController.tabBarItem    = MainTabBarStyleSheet.TabBarItem.Calender.tabBarItem
@@ -56,10 +55,14 @@ final class MainTabBarCoordinator: Coordinator, DiscoverCoordinatorDelegate, Cal
         
         rootViewController = MainTabController(viewControllers: viewControllers)
         
+        rootViewController.viewModel = mainTabBarViewModel
+        
         discoverCoordinator    = DiscoverCoordinator(navigationController: discoverNavigationController)
         calenderCoordinator    = CalenderCoordinator(navigationController: calenderNavigationController)
         profileCoordinator     = ProfileCoordinator(navigationController: profileNavigationController, user: user)
         createEventCoordinator = CreateEventCoordinator(navigationController: createEventNavigationController)
+        
+        mainTabBarViewModel.coordinatorDelegate = self
         
         discoverCoordinator.coordinatorDelegate    = self
         calenderCoordinator.coordinatorDelegate    = self
@@ -71,15 +74,25 @@ final class MainTabBarCoordinator: Coordinator, DiscoverCoordinatorDelegate, Cal
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
         discoverCoordinator.start()
-        calenderCoordinator.start()
-        profileCoordinator.start()
-        createEventCoordinator.start()
+//        calenderCoordinator.start()
+//        profileCoordinator.start()
+//        createEventCoordinator.start()
     }
     
     func anErrorHasOccured(errorMessage: String) {
         let errorPopup = PopupDialog(title: "Error", message: errorMessage)
         ErrorPopoverStyleSheet.Prepare(errorPopup)
-//        rootViewController.presentViewController(errorPopup, animated: true, completion: nil)
+        rootViewController.presentViewController(errorPopup, animated: true, completion: nil)
+    }
+    
+    func userDidSelecTab(atIndex index: Int) {
+        switch index {
+        case 0: discoverCoordinator.start()
+        case 1: calenderCoordinator.start()
+        case 2: profileCoordinator.start()
+//        case 3: createEventCoordinator.start()
+        default: anErrorHasOccured("Invalid selection")
+        }
     }
     
 }

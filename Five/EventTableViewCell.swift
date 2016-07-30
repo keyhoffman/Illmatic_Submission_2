@@ -10,7 +10,7 @@ import UIKit
 
 final class EventTableViewCell: UITableViewCell, Configurable {
     
-    var eventView: EventView?
+    var eventContainerView: EventContainerView?
     
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -22,7 +22,7 @@ final class EventTableViewCell: UITableViewCell, Configurable {
     }
 
     func configure(withItem event: Event) {
-        eventView = EventView(frame: self.frame, event: event)
+        eventContainerView = EventContainerView(frame: self.frame, event: event)
         EventCellStyleSheet.Prepare(self)
     }
 }

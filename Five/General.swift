@@ -54,20 +54,22 @@ enum Button {
     var button: UIButton {
         let b = UIButton(type: .Custom)
         b.setTitle(self.property.title, forState: .Normal)
-        b.backgroundColor = self.property.color
+        b.backgroundColor = self.property.backgroundColor
         b.setImage(self.property.image, forState: .Normal)
-        b.titleLabel?.font = Font.HelveticaNeueMedium(size: 14).font
+        b.titleLabel?.font = Font.HelveticaNeueMedium(size: 20).font
+        b.layer.cornerRadius = 10
+        b.titleLabel?.textColor = property.textColor
         return b
     }
     
-    private var property: (title: String?, color: UIColor?, image: UIImage?) {
+    private var property: (title: String?, backgroundColor: UIColor?, image: UIImage?, textColor: UIColor?) {
         switch self {
-        case JoinEvent:          return ("Join Event", Color.FiveBlue.color, nil)
-        case SaveEvent:          return ("Save Event", Color.FiveBlue.color, nil)
-        case Cancel:             return (nil, nil, IconAssest.CancelEvent.icon)
-        case SendInvite:         return (nil, nil, IconAssest.PaperPlaneInvite.icon)
-        case AddImageFromPhotos: return ("Photos", Color.FiveRed.color, nil)
-        case AddImageFromCamera: return ("Selfie", Color.FiveOrange.color, nil)
+        case JoinEvent:          return ("Join Event", Color.FiveBlue.color, nil, Color.White.color)
+        case SaveEvent:          return ("Save Event", Color.FiveBlue.color, nil, Color.White.color)
+        case Cancel:             return (nil, nil, IconAssest.CancelEvent.icon, nil)
+        case SendInvite:         return (nil, nil, IconAssest.PaperPlaneInvite.icon, nil)
+        case AddImageFromPhotos: return ("Photos", Color.FiveRed.color, nil, Color.White.color)
+        case AddImageFromCamera: return ("Selfie", Color.FiveOrange.color, nil, Color.White.color)
         }
     }
 }

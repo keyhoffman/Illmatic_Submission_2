@@ -13,6 +13,10 @@ struct DiscoverTableViewControllerStyleSheet: ViewPreparer {
     
     static func Prepare(discoverTVC: DiscoverTableViewController) {
         
-        discoverTVC.tableView.rowHeight = 300
+        discoverTVC.tableView.rowHeight = discoverTVC.view.frame.height
+        discoverTVC.tableView.allowsSelection = false
+        discoverTVC.view.backgroundColor = Color.FiveGray.color
+        
+        discoverTVC.navigationController?.navigationItem.titleView = UIImageView(image: IconAssest.FiveLogo.icon)
     }
 }

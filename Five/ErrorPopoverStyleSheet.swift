@@ -16,6 +16,7 @@ struct ErrorPopoverStyleSheet: ViewPreparer {
         
         errorPopover.transitionStyle = .ZoomIn
         
+        
         let pv = PopupDialogDefaultView.appearance()
         pv.titleFont    = Font.HelveticaNeue(size: 16).font
         pv.titleColor   = Color.White.color

@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - Result
 
-enum Result<T> {
+enum Result<T>: Dumpable {
     typealias Value = T
     
     case Success(Value)

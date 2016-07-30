@@ -52,7 +52,7 @@
 		034D8EE31D4B1D41001A6499 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EE21D4B1D41001A6499 /* EventTableViewCell.swift */; };
 		034D8EE51D4B1D99001A6499 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EE41D4B1D99001A6499 /* Event.swift */; };
 		034D8EE71D4B345E001A6499 /* CreateEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EE61D4B345E001A6499 /* CreateEventViewModel.swift */; };
-		034D8EE91D4B35A5001A6499 /* CreateEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EE81D4B35A5001A6499 /* CreateEventTableViewController.swift */; };
+		034D8EE91D4B35A5001A6499 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EE81D4B35A5001A6499 /* CreateEventViewController.swift */; };
 		034D8EEB1D4B3848001A6499 /* CreateEventViewControllerStyleSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EEA1D4B3848001A6499 /* CreateEventViewControllerStyleSheet.swift */; };
 		034D8EED1D4B39D9001A6499 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EEC1D4B39D9001A6499 /* EventView.swift */; };
 		034D8EEF1D4BEB3B001A6499 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EEE1D4BEB3B001A6499 /* Operators.swift */; };
@@ -61,6 +61,11 @@
 		034D8EF61D4BF621001A6499 /* DiscoverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EF51D4BF621001A6499 /* DiscoverTableViewController.swift */; };
 		034D8EF81D4BF73F001A6499 /* DiscoverTableViewControllerStyleSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EF71D4BF73F001A6499 /* DiscoverTableViewControllerStyleSheet.swift */; };
 		034D8EFA1D4C0035001A6499 /* MainTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8EF91D4C0035001A6499 /* MainTabBarViewModel.swift */; };
+		03BDED971D4C1F16005C9050 /* EventContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BDED961D4C1F16005C9050 /* EventContainerView.swift */; };
+		03BDED991D4C1F3A005C9050 /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BDED981D4C1F3A005C9050 /* EventDetailView.swift */; };
+		03BDED9B1D4C1F80005C9050 /* EventDetailViewStyleSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BDED9A1D4C1F80005C9050 /* EventDetailViewStyleSheet.swift */; };
+		03BDED9D1D4C1FAA005C9050 /* EventCellStyleSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BDED9C1D4C1FAA005C9050 /* EventCellStyleSheet.swift */; };
+		03BDED9F1D4C1FDC005C9050 /* EventContainerViewStyleSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BDED9E1D4C1FDC005C9050 /* EventContainerViewStyleSheet.swift */; };
 		27D695914B3DA5EEB1B9B0E5 /* Pods_Five.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66CF4E1DAF8057152A18FC30 /* Pods_Five.framework */; };
 /* End PBXBuildFile section */
 
@@ -112,7 +117,7 @@
 		034D8EE21D4B1D41001A6499 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		034D8EE41D4B1D99001A6499 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		034D8EE61D4B345E001A6499 /* CreateEventViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewModel.swift; sourceTree = "<group>"; };
-		034D8EE81D4B35A5001A6499 /* CreateEventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventTableViewController.swift; sourceTree = "<group>"; };
+		034D8EE81D4B35A5001A6499 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		034D8EEA1D4B3848001A6499 /* CreateEventViewControllerStyleSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewControllerStyleSheet.swift; sourceTree = "<group>"; };
 		034D8EEC1D4B39D9001A6499 /* EventView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		034D8EEE1D4BEB3B001A6499 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
@@ -121,6 +126,11 @@
 		034D8EF51D4BF621001A6499 /* DiscoverTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverTableViewController.swift; sourceTree = "<group>"; };
 		034D8EF71D4BF73F001A6499 /* DiscoverTableViewControllerStyleSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverTableViewControllerStyleSheet.swift; sourceTree = "<group>"; };
 		034D8EF91D4C0035001A6499 /* MainTabBarViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarViewModel.swift; sourceTree = "<group>"; };
+		03BDED961D4C1F16005C9050 /* EventContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventContainerView.swift; sourceTree = "<group>"; };
+		03BDED981D4C1F3A005C9050 /* EventDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
+		03BDED9A1D4C1F80005C9050 /* EventDetailViewStyleSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewStyleSheet.swift; sourceTree = "<group>"; };
+		03BDED9C1D4C1FAA005C9050 /* EventCellStyleSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCellStyleSheet.swift; sourceTree = "<group>"; };
+		03BDED9E1D4C1FDC005C9050 /* EventContainerViewStyleSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventContainerViewStyleSheet.swift; sourceTree = "<group>"; };
 		66CF4E1DAF8057152A18FC30 /* Pods_Five.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Five.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EAFFFCF70BC22B1F8FB4BA7 /* Pods-Five.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Five.release.xcconfig"; path = "Pods/Target Support Files/Pods-Five/Pods-Five.release.xcconfig"; sourceTree = "<group>"; };
 		F61965016B6A8DC6EF919DE7 /* Pods-Five.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Five.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Five/Pods-Five.debug.xcconfig"; sourceTree = "<group>"; };
@@ -187,7 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				034D8E801D47EF4A001A6499 /* Protocols */,
-				034D8E811D47F533001A6499 /* ApplicationCoordinator */,
+				034D8E811D47F533001A6499 /* Application */,
 				034D8E821D47F541001A6499 /* SubCoordinators */,
 			);
 			name = Coordinators;
@@ -202,19 +212,19 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
-		034D8E811D47F533001A6499 /* ApplicationCoordinator */ = {
+		034D8E811D47F533001A6499 /* Application */ = {
 			isa = PBXGroup;
 			children = (
 				034D8E7C1D47EF21001A6499 /* ApplicationCoordinator.swift */,
 			);
-			name = ApplicationCoordinator;
+			name = Application;
 			sourceTree = "<group>";
 		};
 		034D8E821D47F541001A6499 /* SubCoordinators */ = {
 			isa = PBXGroup;
 			children = (
-				034D8EB31D496A3E001A6499 /* AuthenticationCoordinator */,
-				034D8EB41D496A52001A6499 /* MainTabBarCoordinator */,
+				034D8EB31D496A3E001A6499 /* Authentication */,
+				034D8EB41D496A52001A6499 /* MainTabBar */,
 			);
 			name = SubCoordinators;
 			sourceTree = "<group>";
@@ -222,12 +232,10 @@
 		034D8E8D1D47F964001A6499 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				034D8EA21D480523001A6499 /* AuthenticationModel.swift */,
-				034D8EE41D4B1D99001A6499 /* Event.swift */,
-				034D8E8B1D47F95C001A6499 /* User.swift */,
-				034D8EA01D4804BD001A6499 /* Result.swift */,
-				034D8EA41D4820ED001A6499 /* FirebaseType.swift */,
-				034D8ED21D4ABC3C001A6499 /* FirebaseStorageType.swift */,
+				03BDEDA01D4C204B005C9050 /* Authentication */,
+				03BDEDA11D4C205F005C9050 /* BaseDataTypes */,
+				03BDEDA31D4C2087005C9050 /* Result */,
+				03BDEDA21D4C207E005C9050 /* Protocols */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -235,13 +243,13 @@
 		034D8E8E1D47FA88001A6499 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				034D8E8F1D47FA9C001A6499 /* AuthenticationViewController.swift */,
-				034D8EC01D498019001A6499 /* MainTabController.swift */,
-				034D8ECC1D49F28F001A6499 /* ImagePickerViewController.swift */,
-				034D8ED61D4AE30E001A6499 /* ProfileViewController.swift */,
-				034D8EDF1D4B1CBF001A6499 /* BaseTableViewController.swift */,
-				034D8EE81D4B35A5001A6499 /* CreateEventTableViewController.swift */,
-				034D8EF51D4BF621001A6499 /* DiscoverTableViewController.swift */,
+				03BDEDB21D4C219C005C9050 /* Authentication */,
+				03BDEDB31D4C21A7005C9050 /* MainTabBar */,
+				03BDEDB41D4C21AF005C9050 /* ImagePicker */,
+				03BDEDB51D4C21B9005C9050 /* Profile */,
+				03BDEDB61D4C21CB005C9050 /* BaseTableView */,
+				03BDEDB71D4C21F6005C9050 /* CreateEvent */,
+				03BDEDB81D4C21FE005C9050 /* Discover */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -249,12 +257,12 @@
 		034D8E911D48011F001A6499 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				034D8E921D48013B001A6499 /* AuthenticationViewModel.swift */,
-				034D8ECE1D4A9BB1001A6499 /* ImagePickerViewModel.swift */,
-				034D8ED81D4AE4D5001A6499 /* ProfileViewModel.swift */,
-				034D8EE61D4B345E001A6499 /* CreateEventViewModel.swift */,
-				034D8EF31D4BF503001A6499 /* DiscoverViewModel.swift */,
-				034D8EF91D4C0035001A6499 /* MainTabBarViewModel.swift */,
+				03BDEDA41D4C20A1005C9050 /* Authenication */,
+				03BDEDA51D4C20AE005C9050 /* ImagePicker */,
+				03BDEDA61D4C20B6005C9050 /* Profile */,
+				03BDEDA71D4C20C5005C9050 /* CreateEvent */,
+				03BDEDA81D4C20CF005C9050 /* Discover */,
+				03BDEDA91D4C20D5005C9050 /* MainTabBar */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -297,13 +305,13 @@
 			children = (
 				034D8EAE1D495933001A6499 /* Protocols */,
 				034D8EAA1D48486F001A6499 /* General.swift */,
-				034D8EAC1D495906001A6499 /* AuthViewControllerStyleSheet.swift */,
-				034D8EBE1D497685001A6499 /* MainTabStyleSheet.swift */,
-				034D8ED41D4AD9CE001A6499 /* ErrorPopoverStyleSheet.swift */,
-				034D8EDA1D4AE762001A6499 /* ProfileViewControllerStyleSheet.swift */,
-				034D8EEA1D4B3848001A6499 /* CreateEventViewControllerStyleSheet.swift */,
-				034D8EF11D4BEE8A001A6499 /* EventViewStyleSheet.swift */,
-				034D8EF71D4BF73F001A6499 /* DiscoverTableViewControllerStyleSheet.swift */,
+				03BDEDAC1D4C211A005C9050 /* Authentication */,
+				03BDEDAD1D4C212E005C9050 /* MainTabBar */,
+				03BDEDAE1D4C2138005C9050 /* ErrorPopover */,
+				03BDEDAF1D4C2146005C9050 /* Profile */,
+				03BDEDB01D4C214E005C9050 /* CreateEvent */,
+				03BDEDB11D4C215F005C9050 /* DiscoverTableView */,
+				03BDEDAA1D4C20EC005C9050 /* Events */,
 			);
 			name = StyleSheets;
 			sourceTree = "<group>";
@@ -317,21 +325,21 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
-		034D8EB31D496A3E001A6499 /* AuthenticationCoordinator */ = {
+		034D8EB31D496A3E001A6499 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
 				034D8E831D47F576001A6499 /* AuthenticationCoordinator.swift */,
 			);
-			name = AuthenticationCoordinator;
+			name = Authentication;
 			sourceTree = "<group>";
 		};
-		034D8EB41D496A52001A6499 /* MainTabBarCoordinator */ = {
+		034D8EB41D496A52001A6499 /* MainTabBar */ = {
 			isa = PBXGroup;
 			children = (
 				034D8E851D47F582001A6499 /* MainTabBarCoordinator.swift */,
 				034D8EB51D496A70001A6499 /* SubCoordinators */,
 			);
-			name = MainTabBarCoordinator;
+			name = MainTabBar;
 			sourceTree = "<group>";
 		};
 		034D8EB51D496A70001A6499 /* SubCoordinators */ = {
@@ -356,8 +364,7 @@
 		034D8EE11D4B1D24001A6499 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				034D8EE21D4B1D41001A6499 /* EventTableViewCell.swift */,
-				034D8EEC1D4B39D9001A6499 /* EventView.swift */,
+				03BDEDAB1D4C20FC005C9050 /* Events */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -368,6 +375,214 @@
 				034D8EEE1D4BEB3B001A6499 /* Operators.swift */,
 			);
 			name = Operators;
+			sourceTree = "<group>";
+		};
+		03BDEDA01D4C204B005C9050 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				034D8EA21D480523001A6499 /* AuthenticationModel.swift */,
+			);
+			name = Authentication;
+			sourceTree = "<group>";
+		};
+		03BDEDA11D4C205F005C9050 /* BaseDataTypes */ = {
+			isa = PBXGroup;
+			children = (
+				034D8EE41D4B1D99001A6499 /* Event.swift */,
+				034D8E8B1D47F95C001A6499 /* User.swift */,
+			);
+			name = BaseDataTypes;
+			sourceTree = "<group>";
+		};
+		03BDEDA21D4C207E005C9050 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				034D8EA41D4820ED001A6499 /* FirebaseType.swift */,
+				034D8ED21D4ABC3C001A6499 /* FirebaseStorageType.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		03BDEDA31D4C2087005C9050 /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				034D8EA01D4804BD001A6499 /* Result.swift */,
+			);
+			name = Result;
+			sourceTree = "<group>";
+		};
+		03BDEDA41D4C20A1005C9050 /* Authenication */ = {
+			isa = PBXGroup;
+			children = (
+				034D8E921D48013B001A6499 /* AuthenticationViewModel.swift */,
+			);
+			name = Authenication;
+			sourceTree = "<group>";
+		};
+		03BDEDA51D4C20AE005C9050 /* ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				034D8ECE1D4A9BB1001A6499 /* ImagePickerViewModel.swift */,
+			);
+			name = ImagePicker;
+			sourceTree = "<group>";
+		};
+		03BDEDA61D4C20B6005C9050 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				034D8ED81D4AE4D5001A6499 /* ProfileViewModel.swift */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		03BDEDA71D4C20C5005C9050 /* CreateEvent */ = {
+			isa = PBXGroup;
+			children = (
+				034D8EE61D4B345E001A6499 /* CreateEventViewModel.swift */,
+			);
+			name = CreateEvent;
+			sourceTree = "<group>";
+		};
+		03BDEDA81D4C20CF005C9050 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				034D8EF31D4BF503001A6499 /* DiscoverViewModel.swift */,
+			);
+			name = Discover;
+			sourceTree = "<group>";
+		};
+		03BDEDA91D4C20D5005C9050 /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				034D8EF91D4C0035001A6499 /* MainTabBarViewModel.swift */,
+			);
+			name = MainTabBar;
+			sourceTree = "<group>";
+		};
+		03BDEDAA1D4C20EC005C9050 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				034D8EF11D4BEE8A001A6499 /* EventViewStyleSheet.swift */,
+				03BDED9A1D4C1F80005C9050 /* EventDetailViewStyleSheet.swift */,
+				03BDED9C1D4C1FAA005C9050 /* EventCellStyleSheet.swift */,
+				03BDED9E1D4C1FDC005C9050 /* EventContainerViewStyleSheet.swift */,
+			);
+			name = Events;
+			sourceTree = "<group>";
+		};
+		03BDEDAB1D4C20FC005C9050 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				034D8EE21D4B1D41001A6499 /* EventTableViewCell.swift */,
+				034D8EEC1D4B39D9001A6499 /* EventView.swift */,
+				03BDED961D4C1F16005C9050 /* EventContainerView.swift */,
+				03BDED981D4C1F3A005C9050 /* EventDetailView.swift */,
+			);
+			name = Events;
+			sourceTree = "<group>";
+		};
+		03BDEDAC1D4C211A005C9050 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				034D8EAC1D495906001A6499 /* AuthViewControllerStyleSheet.swift */,
+			);
+			name = Authentication;
+			sourceTree = "<group>";
+		};
+		03BDEDAD1D4C212E005C9050 /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				034D8EBE1D497685001A6499 /* MainTabStyleSheet.swift */,
+			);
+			name = MainTabBar;
+			sourceTree = "<group>";
+		};
+		03BDEDAE1D4C2138005C9050 /* ErrorPopover */ = {
+			isa = PBXGroup;
+			children = (
+				034D8ED41D4AD9CE001A6499 /* ErrorPopoverStyleSheet.swift */,
+			);
+			name = ErrorPopover;
+			sourceTree = "<group>";
+		};
+		03BDEDAF1D4C2146005C9050 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				034D8EDA1D4AE762001A6499 /* ProfileViewControllerStyleSheet.swift */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		03BDEDB01D4C214E005C9050 /* CreateEvent */ = {
+			isa = PBXGroup;
+			children = (
+				034D8EEA1D4B3848001A6499 /* CreateEventViewControllerStyleSheet.swift */,
+			);
+			name = CreateEvent;
+			sourceTree = "<group>";
+		};
+		03BDEDB11D4C215F005C9050 /* DiscoverTableView */ = {
+			isa = PBXGroup;
+			children = (
+				034D8EF71D4BF73F001A6499 /* DiscoverTableViewControllerStyleSheet.swift */,
+			);
+			name = DiscoverTableView;
+			sourceTree = "<group>";
+		};
+		03BDEDB21D4C219C005C9050 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				034D8E8F1D47FA9C001A6499 /* AuthenticationViewController.swift */,
+			);
+			name = Authentication;
+			sourceTree = "<group>";
+		};
+		03BDEDB31D4C21A7005C9050 /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				034D8EC01D498019001A6499 /* MainTabController.swift */,
+			);
+			name = MainTabBar;
+			sourceTree = "<group>";
+		};
+		03BDEDB41D4C21AF005C9050 /* ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				034D8ECC1D49F28F001A6499 /* ImagePickerViewController.swift */,
+			);
+			name = ImagePicker;
+			sourceTree = "<group>";
+		};
+		03BDEDB51D4C21B9005C9050 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				034D8ED61D4AE30E001A6499 /* ProfileViewController.swift */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		03BDEDB61D4C21CB005C9050 /* BaseTableView */ = {
+			isa = PBXGroup;
+			children = (
+				034D8EDF1D4B1CBF001A6499 /* BaseTableViewController.swift */,
+			);
+			name = BaseTableView;
+			sourceTree = "<group>";
+		};
+		03BDEDB71D4C21F6005C9050 /* CreateEvent */ = {
+			isa = PBXGroup;
+			children = (
+				034D8EE81D4B35A5001A6499 /* CreateEventViewController.swift */,
+			);
+			name = CreateEvent;
+			sourceTree = "<group>";
+		};
+		03BDEDB81D4C21FE005C9050 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				034D8EF51D4BF621001A6499 /* DiscoverTableViewController.swift */,
+			);
+			name = Discover;
 			sourceTree = "<group>";
 		};
 		49A343FC5F2EB1EAF3713F64 /* Pods */ = {
@@ -512,6 +727,8 @@
 				034D8EF61D4BF621001A6499 /* DiscoverTableViewController.swift in Sources */,
 				034D8E671D47EDAE001A6499 /* AppDelegate.swift in Sources */,
 				034D8E9D1D480353001A6499 /* StringExt.swift in Sources */,
+				03BDED991D4C1F3A005C9050 /* EventDetailView.swift in Sources */,
+				03BDED971D4C1F16005C9050 /* EventContainerView.swift in Sources */,
 				034D8EC11D498019001A6499 /* MainTabController.swift in Sources */,
 				034D8ED31D4ABC3C001A6499 /* FirebaseStorageType.swift in Sources */,
 				034D8EDD1D4B1018001A6499 /* GCD.swift in Sources */,
@@ -521,6 +738,7 @@
 				034D8EB21D495969001A6499 /* ViewPreparer.swift in Sources */,
 				034D8EE31D4B1D41001A6499 /* EventTableViewCell.swift in Sources */,
 				034D8EB01D495958001A6499 /* Configurable.swift in Sources */,
+				03BDED9B1D4C1F80005C9050 /* EventDetailViewStyleSheet.swift in Sources */,
 				034D8E991D48033E001A6499 /* TextFieldExt.swift in Sources */,
 				034D8EB91D496AA6001A6499 /* CalenderCoordinator.swift in Sources */,
 				034D8EAD1D495906001A6499 /* AuthViewControllerStyleSheet.swift in Sources */,
@@ -536,7 +754,7 @@
 				034D8E901D47FA9C001A6499 /* AuthenticationViewController.swift in Sources */,
 				034D8EA51D4820ED001A6499 /* FirebaseType.swift in Sources */,
 				034D8E861D47F582001A6499 /* MainTabBarCoordinator.swift in Sources */,
-				034D8EE91D4B35A5001A6499 /* CreateEventTableViewController.swift in Sources */,
+				034D8EE91D4B35A5001A6499 /* CreateEventViewController.swift in Sources */,
 				034D8E931D48013B001A6499 /* AuthenticationViewModel.swift in Sources */,
 				034D8ECB1D49C99F001A6499 /* TabBarControllerExt.swift in Sources */,
 				034D8EF81D4BF73F001A6499 /* DiscoverTableViewControllerStyleSheet.swift in Sources */,
@@ -544,6 +762,7 @@
 				034D8E7F1D47EF3E001A6499 /* Coordinator.swift in Sources */,
 				034D8EFA1D4C0035001A6499 /* MainTabBarViewModel.swift in Sources */,
 				034D8ED91D4AE4D5001A6499 /* ProfileViewModel.swift in Sources */,
+				03BDED9D1D4C1FAA005C9050 /* EventCellStyleSheet.swift in Sources */,
 				034D8EE51D4B1D99001A6499 /* Event.swift in Sources */,
 				034D8E8C1D47F95C001A6499 /* User.swift in Sources */,
 				034D8ECF1D4A9BB1001A6499 /* ImagePickerViewModel.swift in Sources */,
@@ -556,6 +775,7 @@
 				034D8E9F1D480366001A6499 /* ColorExt.swift in Sources */,
 				034D8EED1D4B39D9001A6499 /* EventView.swift in Sources */,
 				034D8ED51D4AD9CE001A6499 /* ErrorPopoverStyleSheet.swift in Sources */,
+				03BDED9F1D4C1FDC005C9050 /* EventContainerViewStyleSheet.swift in Sources */,
 				034D8EBD1D496AC5001A6499 /* CreateEventCoordinator.swift in Sources */,
 				034D8ED71D4AE30E001A6499 /* ProfileViewController.swift in Sources */,
 				034D8EAB1D48486F001A6499 /* General.swift in Sources */,

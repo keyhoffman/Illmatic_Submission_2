@@ -19,7 +19,7 @@ final class DiscoverCoordinator: Coordinator, DiscoverViewModelCoordinatorDelega
     
     private let navigationController: UINavigationController
     
-//    private let discoverTableViewController = DiscoverTableViewController()
+    private let discoverTableViewController = DiscoverTableViewController()
     
     private let discoverViewModel: DiscoverViewModelType
     
@@ -27,14 +27,14 @@ final class DiscoverCoordinator: Coordinator, DiscoverViewModelCoordinatorDelega
         self.navigationController = navigationController
         
         discoverViewModel = DiscoverViewModel()
-        
-//        discoverTableViewController.viewModel = discoverViewModel
-        
-//        discoverViewModel.coordinatorDelegate = self
     }
     
     func start() {
-//        navigationController.pushViewController(discoverTableViewController, animated: false)
+        if navigationController.topViewController?.isKindOfClass(DiscoverTableViewController) == nil {
+            discoverTableViewController.viewModel = discoverViewModel
+            discoverViewModel.coordinatorDelegate = self
+            navigationController.pushViewController(discoverTableViewController, animated: false)
+        }
     }
     
     func anErrorHasOccured(errorMessage: String) {

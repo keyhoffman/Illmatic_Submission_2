@@ -10,7 +10,6 @@ import UIKit
 
 class MainTabController: UITabBarController, UITabBarControllerDelegate, MainTabBarViewModelViewDelegate {
     
-    
     var viewModel: MainTabBarViewModelType? {
         didSet { viewModel?.viewDelegate = self }
     }
@@ -27,7 +26,7 @@ class MainTabController: UITabBarController, UITabBarControllerDelegate, MainTab
     }
     
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
-        
+        viewModel?.userDidSelectTab(atIndex: viewController.tabBarItem.tag)
     }
     
 }

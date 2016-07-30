@@ -21,6 +21,8 @@ protocol ProfileViewModelViewDelegate: class {
 protocol ProfileViewModelType: class {
     weak var viewDelegate:        ProfileViewModelViewDelegate?        { get set }
     weak var coordinatorDelegate: ProfileViewModelCoordinatorDelegate? { get set }
+    
+    init(user: User)
 }
 
 final class ProfileViewModel: ProfileViewModelType {

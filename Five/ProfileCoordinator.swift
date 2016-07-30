@@ -28,14 +28,14 @@ final class ProfileCoordinator: Coordinator, ProfileViewModelCoordinatorDelegate
         self.navigationController = navigationController
         
         profileViewModel = ProfileViewModel(user: user)
-        profileViewModel.coordinatorDelegate = self
-        
-        profileViewController.viewModel = profileViewModel
-        
     }
     
     func start() {
-        navigationController.pushViewController(profileViewController, animated: false)
+        if navigationController.topViewController?.isKindOfClass(ProfileViewController) == nil {
+            profileViewModel.coordinatorDelegate = self
+            profileViewController.viewModel = profileViewModel
+            navigationController.pushViewController(profileViewController, animated: false)
+        }
     }
     
     func anErrorHasOccured(errorMessage: String) {
