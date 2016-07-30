@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		031C9D9B1D4C8AD6009A0A86 /* SeperatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031C9D9A1D4C8AD6009A0A86 /* SeperatorView.swift */; };
 		034D8E671D47EDAE001A6499 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D8E661D47EDAE001A6499 /* AppDelegate.swift */; };
 		034D8E6E1D47EDAE001A6499 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 034D8E6D1D47EDAE001A6499 /* Assets.xcassets */; };
 		034D8E711D47EDAE001A6499 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 034D8E6F1D47EDAE001A6499 /* LaunchScreen.storyboard */; };
@@ -70,6 +71,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		031C9D9A1D4C8AD6009A0A86 /* SeperatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeperatorView.swift; sourceTree = "<group>"; };
 		034D8E631D47EDAE001A6499 /* Five.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Five.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		034D8E661D47EDAE001A6499 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		034D8E6D1D47EDAE001A6499 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 		034D8EE11D4B1D24001A6499 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				031C9D9A1D4C8AD6009A0A86 /* SeperatorView.swift */,
 				03BDEDAB1D4C20FC005C9050 /* Events */,
 			);
 			name = Views;
@@ -773,6 +776,7 @@
 				034D8EB71D496A99001A6499 /* DiscoverCoordinator.swift in Sources */,
 				034D8EDB1D4AE762001A6499 /* ProfileViewControllerStyleSheet.swift in Sources */,
 				034D8E9F1D480366001A6499 /* ColorExt.swift in Sources */,
+				031C9D9B1D4C8AD6009A0A86 /* SeperatorView.swift in Sources */,
 				034D8EED1D4B39D9001A6499 /* EventView.swift in Sources */,
 				034D8ED51D4AD9CE001A6499 /* ErrorPopoverStyleSheet.swift in Sources */,
 				03BDED9F1D4C1FDC005C9050 /* EventContainerViewStyleSheet.swift in Sources */,

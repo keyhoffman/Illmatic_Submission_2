@@ -12,17 +12,21 @@ import SnapKit
 
 struct EventContainerViewStyleSheet: ViewPreparer {
     
+    private static let eventViewCornerRadius: CGFloat = 30
+    
     static func Prepare(eventContainerView: EventContainerView) {
         
-        eventContainerView.layer.cornerRadius = 10
+        eventContainerView.flipAnimationDuration = 1.0
         
         eventContainerView.addSubview(eventContainerView.eventDetailView)
         eventContainerView.addSubview(eventContainerView.eventView)
         
+        eventContainerView.eventView.layer.cornerRadius = eventViewCornerRadius
         eventContainerView.eventView.snp_makeConstraints { make in
             make.edges.equalTo(eventContainerView.snp_edges)
         }
         
+        eventContainerView.eventDetailView.layer.cornerRadius = eventViewCornerRadius
         eventContainerView.eventDetailView.snp_makeConstraints { make in
             make.edges.equalTo(eventContainerView.snp_edges)
         }

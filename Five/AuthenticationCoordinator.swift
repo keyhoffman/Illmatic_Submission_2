@@ -65,15 +65,19 @@ final class AuthenticationCoordinator: Coordinator, AuthenticationChecker, Authe
         checkForCurrentUser { result in
             switch result {
             case .Success(let user): self.coordinatorDelegate?.userHasBeenAuthenticated(user: user)
-            case .Failure(_):        self.window.rootViewController = self.rootViewController
-                                     self.window.makeKeyAndVisible()
-                                     self.rootViewController.pushViewController(self.signUpViewController, animated: false)
+            case .Failure(_):
+                self.window.rootViewController = self.rootViewController
+                self.window.makeKeyAndVisible()
+                if self.rootViewController.topViewController?.isKindOfClass(AuthenticationViewController) == nil {
+                    self.rootViewController.pushViewController(self.signUpViewController, animated: false)
+                }
             }
         }
     }
     
     
     func userHasBeenAuthenticated(user user: User) {
+        rootViewController.popToRootViewControllerAnimated(false)
         coordinatorDelegate?.userHasBeenAuthenticated(user: user)
     }
     

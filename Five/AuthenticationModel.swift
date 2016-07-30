@@ -57,23 +57,6 @@ struct AuthenticationModel: AuthenticationModelType {
 }
 
 
-//guard let user = user else { // TODO: Move string literal elsewhere
-//    let error = NSError(domain: "TableBNB", code: 1, userInfo: [NSLocalizedDescriptionKey: "Could not create atomic user"])
-//    withResult(.Failure(error))
-//    return
-//}
-
-
-
-
-
-//            guard let user = user, let email = user.email, let username = user.displayName else { // TODO: Move string literal elsewhere
-//                let error = NSError(domain: "TableBNB", code: 1, userInfo: [NSLocalizedDescriptionKey: "Could not create atomic user"])
-//                withResult(.Failure(error))
-//                return
-//            }
-//            let loggedInUser = User(key: user.uid, email: email, username: username, description: .emptyString())
-//            withResult(.Success(loggedInUser))
 
 
 

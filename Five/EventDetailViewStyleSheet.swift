@@ -12,19 +12,100 @@ import SnapKit
 
 struct EventDetailViewStyleSheet: ViewPreparer {
     
-    private static let joinEventButtonWidthToEventDetailViewWidthFactor   = 0.90
-    private static let joinEventButtonHeightToEventDetailViewHeightFactor = 0.10
+    private static let joinEventButtonWidthToViewWidthFactor   = 0.90
+    private static let joinEventButtonHeightToViewHeightFactor = 0.10
+    
+    private static let labelWidthToViewWidthFactor   = 0.90
+    private static let labelHeightToViewHeightFactor = 0.07
+    
+    private static let seperatorHeightToViewHeightFactor = 0.005
+    
+    private static let hostLabelTopToViewTopOffsetByViewHeightFactor:                      CGFloat = 0.07
+    private static let titleLableTopToHostLabelBottomOffsetByViewHeightFactor:             CGFloat = 0.05
+    private static let topSeperatorTopToTitleLabelBottomOffsetByViewHeightFactor:          CGFloat = 0.05
+    private static let detailsLabelTopToTopSeperatorBottomOffsetByViewHeightFactor:        CGFloat = 0.07
+    private static let bottomSeperatorTopToDetailsLabelBottomOffsetByViewHeightFactor:     CGFloat = 0.08
+    private static let descriptionLabelTopToBottomSeperatorBottomOffsetByViewHeightFactor: CGFloat = 0.07
+    private static let joinEventBottomTopToDescriptionLabelBottomOffsetByViewHeightFactor: CGFloat = 0.10
     
     static func Prepare(eventDetailView: EventDetailView) {
         
         eventDetailView.backgroundColor = Color.White.color
         
-        eventDetailView.addSubview(eventDetailView.joinEvenButton)
+        let viewHeight = eventDetailView.frame.height
         
-        eventDetailView.joinEvenButton.snp_makeConstraints { make in
-            make.center.equalTo(eventDetailView.snp_center)
-            make.width.equalTo(eventDetailView.snp_width).multipliedBy(joinEventButtonWidthToEventDetailViewWidthFactor)
-            make.height.equalTo(eventDetailView.snp_height).multipliedBy(joinEventButtonHeightToEventDetailViewHeightFactor)
+        let hostLabelTopToViewTopOffset                      = viewHeight * hostLabelTopToViewTopOffsetByViewHeightFactor
+        let titleLabelTopToHostLabelBottomOffset             = viewHeight * titleLableTopToHostLabelBottomOffsetByViewHeightFactor
+        let topSeperatorTopToTitleLabelBottomOffset          = viewHeight * topSeperatorTopToTitleLabelBottomOffsetByViewHeightFactor
+        let detailsLabelTopToTopSeperatorBottomOffset        = viewHeight * detailsLabelTopToTopSeperatorBottomOffsetByViewHeightFactor
+        let bottomSeperatorTopToDetailsLabelBottomOffset     = viewHeight * bottomSeperatorTopToDetailsLabelBottomOffsetByViewHeightFactor
+        let descriptionLabelTopToBottomSeperatorBottomOffset = viewHeight * descriptionLabelTopToBottomSeperatorBottomOffsetByViewHeightFactor
+        let joinEventBottomTopToDescriptionLabelBottomOffset = viewHeight * joinEventBottomTopToDescriptionLabelBottomOffsetByViewHeightFactor
+        
+        let event = eventDetailView.event
+        
+        let hostLabelText        = "Host: " + event.creatorKey
+        let titleLabelText       = event.title
+        let detailsLabelText     = event.date + "\n" + event.location
+        let descriptionLabelText = event.description
+        
+        eventDetailView.hostLabel.text        = hostLabelText
+        eventDetailView.titleLabel.text       = titleLabelText
+        eventDetailView.detailsLabel.text     = detailsLabelText
+        eventDetailView.descriptionLabel.text = descriptionLabelText
+        
+        for view in eventDetailView.eventDetailSubViews {
+            eventDetailView.addSubview(view)
+            view.snp_makeConstraints { make in
+                make.centerX.equalTo(eventDetailView.snp_centerX)
+            }
+        }
+        
+        for view in eventDetailView.seperators {
+            eventDetailView.addSubview(view)
+            view.snp_makeConstraints { make in
+                make.width.equalTo(eventDetailView.snp_width)
+                make.height.equalTo(eventDetailView.snp_height).multipliedBy(seperatorHeightToViewHeightFactor)
+                make.centerX.equalTo(eventDetailView.snp_centerX)
+            }
+        }
+        
+        for view in eventDetailView.eventDetailSubViews where view is UILabel {
+            view.layer.borderColor = Color.Black.color.CGColor
+//            view.layer.borderWidth = CGFloat(1)
+            view.snp_makeConstraints { make in
+                make.width.equalTo(eventDetailView.snp_width).multipliedBy(labelWidthToViewWidthFactor)
+            }
+        }
+        
+        eventDetailView.hostLabel.snp_makeConstraints { make in
+            make.top.equalTo(eventDetailView.snp_top).offset(hostLabelTopToViewTopOffset)
+        }
+        
+        eventDetailView.titleLabel.snp_makeConstraints { make in
+            make.top.equalTo(eventDetailView.hostLabel.snp_bottom).offset(titleLabelTopToHostLabelBottomOffset)
+        }
+        
+        eventDetailView.topSeperator.snp_makeConstraints { make in
+            make.top.equalTo(eventDetailView.titleLabel.snp_bottom).offset(topSeperatorTopToTitleLabelBottomOffset)
+        }
+        
+        eventDetailView.detailsLabel.snp_makeConstraints { make in
+            make.top.equalTo(eventDetailView.topSeperator.snp_bottom).offset(detailsLabelTopToTopSeperatorBottomOffset)
+        }
+        
+        eventDetailView.bottomSeperator.snp_makeConstraints { make in
+            make.top.equalTo(eventDetailView.detailsLabel.snp_bottom).offset(bottomSeperatorTopToDetailsLabelBottomOffset)
+        }
+        
+        eventDetailView.descriptionLabel.snp_makeConstraints { make in
+            make.top.equalTo(eventDetailView.bottomSeperator.snp_bottom).offset(descriptionLabelTopToBottomSeperatorBottomOffset)
+        }
+        
+        eventDetailView.joinEventButton.snp_makeConstraints { make in
+            make.top.equalTo(eventDetailView.descriptionLabel.snp_bottom).offset(joinEventBottomTopToDescriptionLabelBottomOffset)
+            make.width.equalTo(eventDetailView.snp_width).multipliedBy(joinEventButtonWidthToViewWidthFactor)
+            make.height.equalTo(eventDetailView.snp_height).multipliedBy(joinEventButtonHeightToViewHeightFactor)
         }
     }
     
@@ -34,6 +115,20 @@ struct EventDetailViewStyleSheet: ViewPreparer {
         var button: UIButton {
             switch self {
             case JoinEvent: return Button.JoinEvent.button
+            }
+        }
+    }
+    
+    enum EventDetailLabel {
+        case Host, Title, Detail, Description, Seperator
+        
+        var label: UILabel {
+            switch self {
+            case Host:        return Label.EventDetailHost.label
+            case Title:       return Label.EventDetailTitle.label
+            case Detail:      return Label.EventDetailDetails.label
+            case Description: return Label.EventDetailDescription.label
+            case Seperator:   return Label.Seperator.label
             }
         }
     }

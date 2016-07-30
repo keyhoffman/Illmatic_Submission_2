@@ -26,7 +26,7 @@ final class DiscoverViewModel: DiscoverViewModelType {
     
     
     weak var coordinatorDelegate: DiscoverViewModelCoordinatorDelegate?
-    weak var viewDelegate: DiscoverViewModelViewDelegate? { didSet { print("DiscoverViewModel View delegate set");beginLoadingEvents() } }
+    weak var viewDelegate: DiscoverViewModelViewDelegate? { didSet { beginLoadingEvents() } }
     
     private func beginLoadingEvents() {
         Event.loadChildAdded { result in

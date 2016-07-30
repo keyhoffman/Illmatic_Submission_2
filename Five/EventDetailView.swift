@@ -11,17 +11,29 @@ import UIKit
 
 final class EventDetailView: UIView {
     
-    let hostLabel         = UILabel()
-    let eventTitleLabel   = UILabel()
-    let eventDetailsLabel = UILabel()
-    let descriptionLabel  = UILabel()
+    let hostLabel         = EventDetailViewStyleSheet.EventDetailLabel.Host.label
+    let titleLabel        = EventDetailViewStyleSheet.EventDetailLabel.Title.label
+    let detailsLabel      = EventDetailViewStyleSheet.EventDetailLabel.Detail.label
+    let descriptionLabel  = EventDetailViewStyleSheet.EventDetailLabel.Description.label
     
-    let joinEvenButton = EventDetailViewStyleSheet.EventDetailButton.JoinEvent.button
+    let topSeperator    = EventDetailViewStyleSheet.EventDetailLabel.Seperator.label
+    let bottomSeperator = EventDetailViewStyleSheet.EventDetailLabel.Seperator.label 
+    
+    let joinEventButton = EventDetailViewStyleSheet.EventDetailButton.JoinEvent.button
     
     let event: Event
     
+    let eventDetailSubViews: [UIView]
+    
+    let seperators: [UILabel]
+    
     init(frame: CGRect, event: Event) {
         self.event = event
+        
+        eventDetailSubViews = [hostLabel, titleLabel, detailsLabel, descriptionLabel, joinEventButton]
+        
+        seperators = [topSeperator, bottomSeperator]
+        
         super.init(frame: frame)
         EventDetailViewStyleSheet.Prepare(self)
     }

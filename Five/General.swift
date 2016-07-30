@@ -10,12 +10,7 @@ import Foundation
 import UIKit
 
 enum Color {
-    case FiveBlue    // Create Tab Color, Join + Save Event Button Color, in-app logo
-    case FiveBlueTrans  // Join Event Background
-    case FiveRed     // Card x button, title color, mail paper airplane color
-    case FiveGray    // Background Color
-    case FiveOrange  // navigation barbutton color, tabBarItem none selected item image outline color
-    case White, DarkGray, WhiteGrayScale08, Black
+    case FiveBlue, FiveBlueTrans, FiveRed, FiveGray, FiveOrange, White, DarkGray, WhiteGrayScale08, Black, Clear
     
     var color: UIColor {
         switch self {
@@ -28,6 +23,7 @@ enum Color {
         case DarkGray:         return .darkGray()
         case WhiteGrayScale08: return .whiteGrayScale08()
         case Black:            return .blackColor()
+        case Clear:            return .clearColor()
         }
     }
 }
@@ -76,6 +72,7 @@ enum Button {
 
 enum Label {
     case ImageInstructions, DescriptionInstructions, Username, UserDescription, UserContactInfo, EventViewTitle
+    case EventDetailHost, EventDetailDescription, EventDetailDetails, EventDetailTitle, Seperator
     
     var label: UILabel {
         let l = UILabel()
@@ -84,6 +81,8 @@ enum Label {
         l.textAlignment = .Center
         l.font = fontAndSize
         l.numberOfLines = 0
+        l.sizeToFit()
+        l.backgroundColor = backgroundColor
         return l
     }
     
@@ -95,7 +94,7 @@ enum Label {
         }
     }
     
-    private var textColor: UIColor {
+    private var textColor: UIColor? {
         switch self {
         case ImageInstructions:       return Color.White.color
         case DescriptionInstructions: return Color.White.color
@@ -103,13 +102,29 @@ enum Label {
         case UserDescription:         return Color.Black.color
         case UserContactInfo:         return Color.Black.color
         case EventViewTitle:          return Color.White.color
+        case EventDetailTitle:        return Color.FiveOrange.color
+        case EventDetailHost:         return Color.Black.color
+        case EventDetailDescription:  return Color.Black.color
+        case EventDetailDetails:      return Color.Black.color
+        default:                      return nil
         }
     }
     
-    private var fontAndSize: UIFont {
+    private var fontAndSize: UIFont? {
         switch self {
-        case EventViewTitle: return Font.HelveticaNeue(size: 24).font
-        default:             return Font.HelveticaNeueMedium(size: 14).font
+        case EventViewTitle:         return Font.HelveticaNeue(size: 24).font
+        case EventDetailTitle:       return Font.HelveticaNeue(size: 24).font
+        case EventDetailHost:        return Font.HelveticaNeueLight(size: 16).font
+        case EventDetailDescription: return Font.HelveticaNeueLight(size: 16).font
+        case EventDetailDetails:     return Font.HelveticaNeueLight(size: 16).font
+        default:                     return Font.HelveticaNeueMedium(size: 18).font
+        }
+    }
+    
+    private var backgroundColor: UIColor? {
+        switch self {
+        case Seperator: return Color.FiveGray.color
+        default:        return Color.Clear.color
         }
     }
 }
@@ -161,9 +176,9 @@ enum Font {
     
     var font: UIFont! {
         switch self {
-        case .HelveticaNeue(let size):       return UIFont(name: "HelveticaNeue", size: size)
-        case .HelveticaNeueLight(let size):  return UIFont(name: "HelveticaNeue-Light", size: size)
-        case .HelveticaNeueMedium(let size): return UIFont(name: "HelveticaNeue-Medium", size: size)
+        case HelveticaNeue(let size):       return UIFont(name: "HelveticaNeue", size: size)
+        case HelveticaNeueLight(let size):  return UIFont(name: "HelveticaNeue-Light", size: size)
+        case HelveticaNeueMedium(let size): return UIFont(name: "HelveticaNeue-Medium", size: size)
         }
     }
 }
