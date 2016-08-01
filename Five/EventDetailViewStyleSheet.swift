@@ -30,7 +30,7 @@ struct EventDetailViewStyleSheet: ViewPreparer {
     
     static func Prepare(eventDetailView: EventDetailView) {
         
-        defer { eventDetailView.layoutIfNeeded() }
+        defer { eventDetailView.layoutIfNeeded() } // USE STACK VIEW
         
         eventDetailView.backgroundColor = Color.White.color
         
