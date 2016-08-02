@@ -15,7 +15,6 @@ final class SeperatorView: UIView {
         backgroundColor = Color.FiveGray.color
     }
     
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
