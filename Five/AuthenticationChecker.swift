@@ -13,7 +13,7 @@ protocol AuthenticationChecker {}
 
 extension AuthenticationChecker {
     func checkForCurrentUser(withResult: Result<User> -> Void) {
-        let error = NSError(domain: "Five", code: 2, userInfo: [NSLocalizedDescriptionKey: ""])
+        let error = NSError(domain: "Five", code: 2, userInfo: [NSLocalizedDescriptionKey: "No user found"])
         let auth = FIRAuth.auth()
         guard let key = auth?.currentUser?.uid else {
             withResult(.Failure(error))
